@@ -1,9 +1,5 @@
 function Content() {
-  return (
-    <div>
-      Content
-    </div>
-  )
+  return <div className="text-xl">Content</div>;
 }
 
-export default Content
+export default Content;
