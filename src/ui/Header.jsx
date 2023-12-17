@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { CloseRound, SendFilled } from "@ricons/material";
 
-const Container = styled.div``;
-// const LineGroup = styled.div``;
 const Line = styled.div`
   width: 100vw;
   height: ${(props) => (props.color === "red" ? "6px" : "3px")};
@@ -31,7 +29,7 @@ const TitleText = styled.p`
 
 function Header() {
   return (
-    <Container className="flex flex-col justify-between sm:flex-row sm:mt-6">
+    <header className="flex flex-col justify-between sm:flex-row sm:mt-6">
       <div className="sm:w-full">
         <Line color="red" className="mb-1.5 mt-1" />
         <Line color="orange" />
@@ -57,7 +55,7 @@ function Header() {
         <Line color="orange" className="mb-1.5" />
         <Line color="red" />
       </div>
-    </Container>
+    </header>
   );
 }
 

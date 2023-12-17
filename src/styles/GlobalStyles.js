@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     /* background-color: orange; */
   }
+
 `
 
 export default GlobalStyles
