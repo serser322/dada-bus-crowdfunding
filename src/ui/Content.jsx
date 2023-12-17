@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ProgressBar from "../components/ProgressBar";
 import Card from "../components/Card";
 import CardItem from "../components/CardItem";
 import {
@@ -37,7 +38,7 @@ const SubText = styled.span`
 function Content() {
   return (
     <main className="flex flex-col items-center my-6 p-2.5 sm:px-10">
-      {/* 手機排序  */}
+      <ProgressBar></ProgressBar>
       <Card>
         <CardItem icon={AttachMoneyRound} title="目前金額">
           <SubText className="mr-2">NT$</SubText>
