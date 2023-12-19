@@ -4,8 +4,8 @@ import BusIcon from "../../public/bus_icon.svg";
 const BusIconImage = styled.img`
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
     brightness(118%) contrast(119%);
-  position: absolute;
   width: 3.7rem;
+  position: absolute;
   top: -13px;
   left: 5px;
 
@@ -58,7 +58,7 @@ function ProgressBar() {
   const percentage = 70;
   return (
     <div className="w-full relative rounded-lg">
-      <BusIconImage src={BusIcon} className="" alt="" />
+      <BusIconImage src={BusIcon} alt="" />
       <div className="flex justify-end items-baseline font-bold mr-4">
         <span className="text-sm sm:text-base mr-2">NT$</span>
         <NumberText className="text-xl sm:text-2xl">23,011</NumberText>

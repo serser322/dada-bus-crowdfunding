@@ -4,6 +4,8 @@ import Divider from "../components/Divider";
 import ProgressBar from "../components/ProgressBar";
 import Card from "../components/Card";
 import CardItem from "../components/CardItem";
+import LockedProgressBar from "../components/LockedProgressBar";
+
 import {
   AttachMoneyRound,
   CheckRound,
@@ -97,6 +99,7 @@ function Content() {
           <span>募資中</span>
         </CardItem>
       </Card>
+      <LockedProgressBar />
     </main>
   );
 }
