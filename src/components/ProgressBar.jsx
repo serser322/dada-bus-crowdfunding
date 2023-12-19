@@ -57,7 +57,7 @@ const UpdateTime = styled.div`
 function ProgressBar() {
   const percentage = 70;
   return (
-    <div className="my-6 w-full relative rounded-lg">
+    <div className="w-full relative rounded-lg">
       <BusIconImage src={BusIcon} className="" alt="" />
       <div className="flex justify-end items-baseline font-bold mr-4">
         <span className="text-sm sm:text-base mr-2">NT$</span>
@@ -65,7 +65,7 @@ function ProgressBar() {
       </div>
       <Bar className="w-full" percentage={percentage}></Bar>
       <div className="flex justify-center items-baseline font-bold mt-3 sm:mt-5">
-        <span className="text-lg sm:text-xl mr-3">募資進度</span>
+        <span className="text-xl sm:text-2xl mr-3">募資進度</span>
         <NumberText className="text-4xl sm:text-5xl mr-1">63.9</NumberText>
         <NumberText className="text-lg sm:text-xl">%</NumberText>
       </div>

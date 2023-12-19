@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Title from "../components/Title";
+import Divider from "../components/Divider";
 import ProgressBar from "../components/ProgressBar";
 import Card from "../components/Card";
 import CardItem from "../components/CardItem";
@@ -37,8 +39,16 @@ const SubText = styled.span`
 
 function Content() {
   return (
-    <main className="flex flex-col items-center my-6 p-2.5 sm:px-10">
-      <ProgressBar></ProgressBar>
+    <main className="flex flex-col items-center space-y-6 my-6 p-2.5 sm:px-10">
+      <div className="self-start">
+        <Title title1="第一階段" title2="基礎募資" />
+        <Divider />
+      </div>
+
+      <ProgressBar />
+      <div className="self-start !mt-0 ">
+        <Divider />
+      </div>
       <Card>
         <CardItem icon={AttachMoneyRound} title="目前金額">
           <SubText className="mr-2">NT$</SubText>
