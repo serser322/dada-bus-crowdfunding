@@ -1,4 +1,6 @@
 import styled from "styled-components";
+// import { useState, useRef } from "react";
+import CountUp from "react-countup";
 import BusIcon from "../../public/bus_icon.svg";
 
 const BusIconImage = styled.img`
@@ -32,7 +34,7 @@ const Bar = styled.div`
     display: block;
     position: relative;
     z-index: -1;
-    width: ${(props) => props.percentage + "%"};
+    width: ${(props) => props.$percentage + "%"};
     height: 100%;
     background-color: var(--green-bar);
     border-radius: 0.8rem;
@@ -54,19 +56,44 @@ const UpdateTime = styled.div`
   }
 `;
 
-function ProgressBar() {
-  const percentage = 70;
+function ProgressBar({ targetAmount, currentAmount }) {
+  // const [counter, setCounter] = useState(0);
+  // const countRef = useRef(null);
+  // countRef.current = counter;
+  const percentage = (currentAmount / targetAmount) * 100;
+
+  // const increase = () => {
+  //   const myInterval = setInterval(() => {
+  //     if (countRef.current <= 65) {
+  //       setCounter((newValue) => newValue + 1);
+  //     } else {
+  //       clearInterval(myInterval);
+  //     }
+  //   }, 20);
+  // };
   return (
     <div className="w-full relative rounded-lg">
       <BusIconImage src={BusIcon} alt="" />
       <div className="flex justify-end items-baseline font-bold mr-4 mb-1.5">
+        {/* <button onClick={increase}>increase</button>
+        <div>{counter}</div> */}
         <span className="text-sm sm:text-base mr-2">NT$</span>
-        <NumberText className="text-xl sm:text-2xl">23,011</NumberText>
+        <NumberText className="text-xl sm:text-2xl">
+          <CountUp start={0} end={currentAmount} duration={2.8} delay={0.1} />
+        </NumberText>
       </div>
-      <Bar className="w-full" percentage={percentage}></Bar>
+      <Bar className="w-full" $percentage={percentage}></Bar>
       <div className="flex justify-center items-baseline font-bold mt-3 sm:mt-5">
         <span className="text-lg md:text-2xl mr-3">募資進度</span>
-        <NumberText className="text-3xl md:text-4xl mr-1">63.9</NumberText>
+        <NumberText className="text-3xl md:text-4xl mr-1">
+          <CountUp
+            start={0}
+            end={percentage}
+            decimals={1}
+            duration={2.8}
+            delay={0.1}
+          />
+        </NumberText>
         <NumberText className="text-lg sm:text-2xl">%</NumberText>
       </div>
 

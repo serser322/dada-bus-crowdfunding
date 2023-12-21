@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CountUp from "react-countup";
 import Title from "../components/Title";
 import Divider from "../components/Divider";
 import ProgressBar from "../components/ProgressBar";
@@ -40,6 +41,8 @@ const SubText = styled.span`
 `;
 
 function Content() {
+  const targetAmount = 36000;
+  const currentAmount = 23011;
   return (
     <main className="flex flex-col items-center space-y-10 mt-6 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
       <div className="self-start">
@@ -47,7 +50,7 @@ function Content() {
         <Divider />
       </div>
 
-      <ProgressBar />
+      <ProgressBar targetAmount={targetAmount} currentAmount={currentAmount} />
       <div className="self-start !mt-0 ">
         <Divider />
       </div>
@@ -55,7 +58,14 @@ function Content() {
         <CardItem icon={AttachMoneyRound} title="目前金額">
           <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
             <SubText className="mr-2">NT$</SubText>
-            <NumberText>23,011</NumberText>
+            <NumberText>
+              <CountUp
+                start={0}
+                end={currentAmount}
+                duration={2.8}
+                delay={0.1}
+              />
+            </NumberText>
           </div>
         </CardItem>
 
@@ -64,7 +74,14 @@ function Content() {
           <CardItem icon={CheckRound} title="目標金額">
             <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
               <SubText className="mr-2">NT$</SubText>
-              <NumberText>36,000</NumberText>
+              <NumberText>
+                <CountUp
+                  start={0}
+                  end={targetAmount}
+                  duration={2.8}
+                  delay={0.1}
+                />
+              </NumberText>
             </div>
           </CardItem>
         </div>
@@ -93,7 +110,14 @@ function Content() {
           >
             <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
               <SubText className="mr-2">NT$</SubText>
-              <NumberText>36,000</NumberText>
+              <NumberText>
+                <CountUp
+                  start={0}
+                  end={targetAmount}
+                  duration={2.8}
+                  delay={0.1}
+                />
+              </NumberText>
             </div>
           </CardItem>
         </div>
@@ -103,7 +127,9 @@ function Content() {
 
         <CardItem icon={LocationOnOutlined} title="階段狀態">
           <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-            <NumberText className="mr-2">1</NumberText>
+            <NumberText className="mr-2">
+              <CountUp start={0} end={1} duration={0.5} delay={0.1} />
+            </NumberText>
             <SubText className="mr-1">
               <span className="mr-2">
                 <span className="text-base">st</span> 階段
