@@ -6,7 +6,7 @@ const BaseCard = styled.div`
 
 function Card({ children }) {
   return (
-    <BaseCard className="flex justify-center rounded-lg p-6">
+    <BaseCard className="flex justify-center rounded-lg w-full p-6">
       <div
         className="
         grid grid-cols-1 
