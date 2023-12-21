@@ -5,12 +5,14 @@ import Footer from "./ui/Footer";
 
 function App() {
   return (
-    <>
+    <div className="h-full md:flex md:flex-col md:justify-between">
       <GlobalStyles />
-      <Header />
-      <Content />
+      <div>
+        <Header />
+        <Content />
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

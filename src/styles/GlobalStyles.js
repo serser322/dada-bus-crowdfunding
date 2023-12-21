@@ -10,6 +10,15 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-family: "Noto Sans TC", sans-serif;
     box-sizing: border-box;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
+
+  #root {
+    height: 100%;
   }
 
 `
