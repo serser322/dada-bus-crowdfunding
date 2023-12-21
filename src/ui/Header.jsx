@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { CloseRound, SendFilled } from "@ricons/material";
 
 const Line = styled.div`
-  width: 100vw;
+  width: 100%;
   height: ${(props) => (props.color === "red" ? "6px" : "3px")};
   background-color: ${(props) => props.color};
 
@@ -29,7 +29,7 @@ const TitleText = styled.p`
 
 function Header() {
   return (
-    <header className="flex flex-col justify-between sm:flex-row sm:mt-6">
+    <header className="flex flex-col justify-between sm:flex-row sm:pt-6">
       <div className="sm:w-full">
         <Line color="red" className="mb-1.5 mt-1" />
         <Line color="orange" />
