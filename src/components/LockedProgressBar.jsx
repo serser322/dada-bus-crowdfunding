@@ -3,12 +3,12 @@ import BusIcon from "../../public/bus_icon.svg";
 import { LockFilled } from "@ricons/material";
 
 const StyleBar = styled.div`
-  color: var(--color-grey-1);
+  color: var(--gray-1);
 `;
 
 const BusIconImage = styled.img`
-  filter: invert(61%) sepia(0%) saturate(27%) hue-rotate(197deg) brightness(83%)
-    contrast(89%);
+  filter: invert(41%) sepia(0%) saturate(12%) hue-rotate(145deg) brightness(93%)
+    contrast(77%);
   width: 3.2rem;
   position: absolute;
   top: -16px;
@@ -22,10 +22,10 @@ const BusIconImage = styled.img`
 `;
 
 const Bar = styled.div`
-  border: 3px solid var(--color-grey-1);
+  border: 3px solid var(--gray-1);
   position: relative;
   height: 1rem;
-  box-shadow: 1px 3px 4px 0px rgba(255, 0, 0, 0.25);
+  box-shadow: 1px 3px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 1.2rem;
 
   &::before {
@@ -35,7 +35,7 @@ const Bar = styled.div`
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: var(--color-grey-2);
+    background-color: var(--gray-2);
     border-radius: 1rem;
   }
 
@@ -65,7 +65,7 @@ function LockedProgressBar() {
       <div className="text-xs font-semibold text-end  mb-1">
         <span className="mr-2">(待解鎖)</span>
       </div>
-      <Bar className="w-full">
+      <Bar className="w-full text-gray-500">
         <div>
           <LockFilled />
         </div>

@@ -3,12 +3,16 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
   :root {
     --color-text: #30475E;
-    --color-grey-1: #828282;
-    --color-grey-2: #9c9c9c;
+    --red-text: #FA4C4C;
+    --green-bar: #00FF66;
+    --green-num:#00D12E;
+    --gray-1: #828282;
+    --gray-2: #E1E1E1;
   }
 
   html {
     font-family: "Noto Sans TC", sans-serif;
+    color: var(--color-text);
     box-sizing: border-box;
     height: 100%;
   }
