@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import CountUp from "react-countup";
 import BusIcon from "../../public/bus_icon.svg";
 
@@ -57,26 +57,30 @@ const UpdateTime = styled.div`
 `;
 
 function ProgressBar({ targetAmount, currentAmount }) {
-  // const [counter, setCounter] = useState(0);
-  // const countRef = useRef(null);
-  // countRef.current = counter;
-  const percentage = (currentAmount / targetAmount) * 100;
+  const [percentage, setPercentage] = useState(0);
+  const percentageRef = useRef(null);
+  percentageRef.current = percentage;
+  const amountPercentage = ((currentAmount / targetAmount) * 100).toFixed(1);
+  const seconds = 2000 / amountPercentage;
+  // const amountPercentage = 99.0;
+  const increasePercentage = () => {
+    const increaseInterval = setInterval(() => {
+      if (percentageRef.current < amountPercentage) {
+        setPercentage((newValue) => newValue + 1);
+      } else {
+        clearInterval(increaseInterval);
+      }
+    }, seconds);
+  };
 
-  // const increase = () => {
-  //   const myInterval = setInterval(() => {
-  //     if (countRef.current <= 65) {
-  //       setCounter((newValue) => newValue + 1);
-  //     } else {
-  //       clearInterval(myInterval);
-  //     }
-  //   }, 20);
-  // };
+  useEffect(() => {
+    increasePercentage();
+  }, []);
+
   return (
     <div className="w-full relative rounded-lg">
       <BusIconImage src={BusIcon} alt="" />
       <div className="flex justify-end items-baseline font-bold mr-4 mb-1.5">
-        {/* <button onClick={increase}>increase</button>
-        <div>{counter}</div> */}
         <span className="text-sm sm:text-base mr-2">NT$</span>
         <NumberText className="text-xl sm:text-2xl">
           <CountUp start={0} end={currentAmount} duration={2.8} delay={0.1} />
@@ -85,10 +89,11 @@ function ProgressBar({ targetAmount, currentAmount }) {
       <Bar className="w-full" $percentage={percentage}></Bar>
       <div className="flex justify-center items-baseline font-bold mt-3 sm:mt-5">
         <span className="text-lg md:text-2xl mr-3">募資進度</span>
+        {/* <div>{percentage.toFixed(1)}</div> */}
         <NumberText className="text-3xl md:text-4xl mr-1">
           <CountUp
             start={0}
-            end={percentage}
+            end={amountPercentage}
             decimals={1}
             duration={2.8}
             delay={0.1}

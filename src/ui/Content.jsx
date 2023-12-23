@@ -128,7 +128,7 @@ function Content() {
         <CardItem icon={LocationOnOutlined} title="階段狀態">
           <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
             <NumberText className="mr-2">
-              <CountUp start={0} end={1} duration={0.5} delay={0.1} />
+              <CountUp start={0} end={1} duration={0.8} delay={0.3} />
             </NumberText>
             <SubText className="mr-1">
               <span className="mr-2">
