@@ -29,7 +29,7 @@ const Bar = styled.div`
   box-shadow: 1px 3px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 1rem;
 
-  &::before {
+  &:before {
     content: "";
     display: block;
     position: relative;
@@ -38,6 +38,7 @@ const Bar = styled.div`
     height: 100%;
     background-color: var(--green-bar);
     border-radius: 0.8rem;
+    z-index: 0;
   }
 
   @media (min-width: 640px) {

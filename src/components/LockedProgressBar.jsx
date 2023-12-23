@@ -37,9 +37,10 @@ const Bar = styled.div`
     height: 100%;
     background-color: var(--gray-2);
     border-radius: 1rem;
+    z-index: 0;
   }
 
-  div {
+  .lock_icon {
     position: relative;
     top: -16px;
     left: calc(50% - 1.1rem);
@@ -49,11 +50,11 @@ const Bar = styled.div`
   @media (min-width: 640px) {
     height: 1.5rem;
 
-    div {
+    .lock_icon {
       position: relative;
-      top: -23px;
+      top: -25px;
       left: calc(50% - 1.1rem);
-      width: 1.8rem;
+      width: 2rem;
     }
   }
 `;
@@ -66,7 +67,7 @@ function LockedProgressBar() {
         <span className="mr-2">(待解鎖)</span>
       </div>
       <Bar className="w-full text-gray-500">
-        <div>
+        <div className="lock_icon">
           <LockFilled />
         </div>
       </Bar>
