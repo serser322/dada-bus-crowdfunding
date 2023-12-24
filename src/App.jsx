@@ -5,7 +5,7 @@ import Footer from "./ui/Footer";
 
 function App() {
   return (
-    <div className="h-full md:flex md:flex-col md:justify-between">
+    <div className="h-full sm:flex sm:flex-col sm:justify-between">
       <GlobalStyles />
       <div>
         <Header />
