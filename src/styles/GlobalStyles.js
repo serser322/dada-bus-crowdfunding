@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Background from './../../public/background.png'
 
 
 const GlobalStyles = createGlobalStyle`
@@ -21,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     height: 100%;
     position: relative;
-    background-image: url('./../../public/background.png');
+    background-image: url(${Background});
     background-size: 60%;
   }
 
