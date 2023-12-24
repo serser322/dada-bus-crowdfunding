@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import DadaImg from "../../public/vts-2022-11-02_06h44_01.png";
 import YodaImg from "../../public/vts-2021-12-25_22h52_13.png";
 import CountUp from "react-countup";
@@ -164,6 +165,36 @@ const YodaImgStyle = styled.div`
 function Content() {
   const targetAmount = 36000;
   const currentAmount = 23011;
+  const deadlineTimestamp = 1706716799000; // 2024/01/31 23:59:59
+  const [remainTimeSeconds, setRemainTimeSeconds] = useState(
+    (deadlineTimestamp - new Date().getTime()) / 1000
+  );
+  const [remainDays, setRemainDays] = useState("0");
+  const [remainHours, setRemainHours] = useState("0");
+  const [remainMinutes, setRemainMinutes] = useState("0");
+  const [remainSeconds, setRemainSeconds] = useState("0");
+
+  const getRemainTime = () => {
+    const days = Math.trunc(remainTimeSeconds / (60 * 60 * 24));
+    const hours = (
+      "0" + Math.trunc((remainTimeSeconds / (60 * 60)) % 24)
+    ).slice(-2);
+    const minutes = ("0" + Math.trunc((remainTimeSeconds / 60) % 60)).slice(-2);
+    const seconds = ("0" + Math.trunc(remainTimeSeconds % 60)).slice(-2);
+    setRemainDays(days);
+    setRemainHours(hours);
+    setRemainMinutes(minutes);
+    setRemainSeconds(seconds);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRemainTimeSeconds((newValue) => newValue - 1);
+    }, 1000);
+    getRemainTime();
+    return () => clearInterval(interval);
+  }, [remainTimeSeconds]);
+
   return (
     <StyleMain>
       <div className="flex flex-col items-center relative space-y-10 mt-6 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
@@ -171,7 +202,6 @@ function Content() {
           <Title title1="第一階段" title2="基礎募資" />
           <Divider />
         </div>
-
         <ProgressBar
           targetAmount={targetAmount}
           currentAmount={currentAmount}
@@ -213,17 +243,17 @@ function Content() {
 
           <CardItem icon={AvTimerRound} title="募資倒數">
             <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-              <NumberText className="mr-2">49</NumberText>
+              <NumberText className="mr-2">{remainDays}</NumberText>
               <SubText className="mr-4">天</SubText>
-              <NumberText className="sm:mr-1">13</NumberText>
+              <NumberText className="sm:mr-1">{remainHours}</NumberText>
               <SubText className="sm:mr-1">
                 <span className="text-base">：</span>
               </SubText>
-              <NumberText className="sm:mr-1">52</NumberText>
+              <NumberText className="sm:mr-1">{remainMinutes}</NumberText>
               <SubText className="sm:mr-1">
                 <span className="text-base">：</span>
               </SubText>
-              <NumberText>13</NumberText>
+              <NumberText>{remainSeconds}</NumberText>
             </div>
           </CardItem>
           {/* 螢幕寬度不同，更換目標金額的排列順序 */}
