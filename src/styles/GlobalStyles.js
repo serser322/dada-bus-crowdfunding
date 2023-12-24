@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+
 const GlobalStyles = createGlobalStyle`
   :root {
     --color-text: #30475E;
@@ -20,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     height: 100%;
     position: relative;
-    background-image: url('../../public/background.png');
+    background-image: url('./../../public/background.png');
     background-size: 60%;
   }
 

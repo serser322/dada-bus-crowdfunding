@@ -57,13 +57,12 @@ const UpdateTime = styled.div`
   }
 `;
 
-function ProgressBar({ targetAmount, currentAmount }) {
+function ProgressBar({ targetAmount, currentAmount, updateDate }) {
   const [percentage, setPercentage] = useState(0);
   const percentageRef = useRef(null);
   percentageRef.current = percentage;
   const amountPercentage = ((currentAmount / targetAmount) * 100).toFixed(1);
   const seconds = 2000 / amountPercentage;
-  // const amountPercentage = 99.0;
   const increasePercentage = () => {
     const increaseInterval = setInterval(() => {
       if (percentageRef.current < amountPercentage) {
@@ -104,7 +103,7 @@ function ProgressBar({ targetAmount, currentAmount }) {
       </div>
 
       <UpdateTime className="flex justify-center mt-5">
-        資料更新：2023/12/10
+        資料更新：{updateDate}
       </UpdateTime>
     </div>
   );
