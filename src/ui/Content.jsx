@@ -165,6 +165,7 @@ const YodaImgStyle = styled.div`
 function Content() {
   const targetAmount = 36000;
   const currentAmount = 23011;
+  const updateDate = "2023/12/25";
   const deadlineTimestamp = 1706716799000; // 2024/01/31 23:59:59
   const [remainTimeSeconds, setRemainTimeSeconds] = useState(
     (deadlineTimestamp - new Date().getTime()) / 1000
@@ -199,12 +200,13 @@ function Content() {
     <StyleMain>
       <div className="flex flex-col items-center relative space-y-10 mt-6 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
         <div className="self-start">
-          <Title title1="第一階段" title2="基礎募資" />
+          <Title title1="第二階段" title2="基礎募資" />
           <Divider />
         </div>
         <ProgressBar
           targetAmount={targetAmount}
           currentAmount={currentAmount}
+          updateDate={updateDate}
         />
         <div className="self-start !mt-0 invisible ">
           <Divider />
