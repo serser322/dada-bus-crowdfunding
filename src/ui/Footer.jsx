@@ -1,12 +1,8 @@
 import styled from "styled-components";
 import FooterLink from "../components/FooterLink";
 import XIcon from "../../public/x_icon.svg";
-import PageIcon from "../../public/page-black-icon.svg";
+import DocumentIcon from "../../public/edit-document-icon.svg";
 import YoutubeIcon from "../../public/youtube-icon.svg";
-
-// const StyleFooter = styled.footer`
-//   background-color: #3c3c3c;
-// `;
 
 const FooterDivider = styled.div`
   background-color: white;
@@ -30,7 +26,7 @@ function Footer() {
         />
 
         <FooterLink
-          iconImg={PageIcon}
+          iconImg={DocumentIcon}
           text="兩千回饋表單"
           link="https://docs.google.com/forms/d/e/1FAIpQLSeY2CMaUNRrr90Xc7KqgnQtw58SnMWPg9jzfZYtYt0iEIzQDw/viewform"
         />
@@ -48,7 +44,7 @@ function Footer() {
         />
       </div>
       <div className="grid grid-cols-1 justify-items-center lg:justify-self-end lg:flex lg:items-center">
-        <FooterDivider className="m-2 lg:mr-4" />
+        <FooterDivider className="mx-2 my-4 sm:my-3 lg:my-2 lg:mr-4" />
         <div className="grid grid-cols-2 justify-items-center w-60 text-xs sm:w-[565px] sm:grid-cols-4 sm:justify-items-start md:w-[660px] lg:w-auto lg:grid-cols-2 lg:gap-1 lg:gap-x-4">
           <p className="hidden sm:block sm:col-span-2 lg:hidden">
             Copyright © 2023-2024. All rights reserved.
