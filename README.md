@@ -9,9 +9,13 @@ Relive 一期生 Vtuber[**灰妲**](https://www.youtube.com/@ReLiveDaDa)，要�
 
 可查看最新募資階段、金額、進度等等，與活動推特同步更新。
 
-![手機截圖](./public/mobile-screen-shot.jpg)
+##### 電腦版
 
-![網站截圖](./public/web-screenshot.jpg)
+<img src="./public/web-screenshot.jpg" alt="網站截圖" width="80%" >
+
+##### 手機版
+
+<img src="./public/mobile-screenshot.jpg" alt="手機截圖" width="40%" >
 
 ## 活動推特
 
