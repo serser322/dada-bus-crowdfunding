@@ -62,7 +62,8 @@ function ProgressBar({ targetAmount, currentAmount, updateDate }) {
   const percentageRef = useRef(null);
   percentageRef.current = percentage;
   const amountPercentage = ((currentAmount / targetAmount) * 100).toFixed(1);
-  const seconds = 2000 / amountPercentage;
+  // const seconds = 2000 / amountPercentage ;
+  const seconds = 100;
   const increasePercentage = () => {
     const increaseInterval = setInterval(() => {
       if (percentageRef.current < amountPercentage) {
@@ -74,7 +75,10 @@ function ProgressBar({ targetAmount, currentAmount, updateDate }) {
   };
 
   useEffect(() => {
-    increasePercentage();
+    // 延遲0.3秒再跑條
+    setTimeout(() => {
+      increasePercentage();
+    }, 300);
   }, []);
 
   return (
@@ -89,7 +93,6 @@ function ProgressBar({ targetAmount, currentAmount, updateDate }) {
       <Bar className="w-full" $percentage={percentage}></Bar>
       <div className="flex justify-center items-baseline font-bold mt-3 sm:mt-5">
         <span className="text-lg md:text-2xl mr-3">募資進度</span>
-        {/* <div>{percentage.toFixed(1)}</div> */}
         <NumberText className="text-3xl md:text-4xl mr-1">
           <CountUp
             start={0}

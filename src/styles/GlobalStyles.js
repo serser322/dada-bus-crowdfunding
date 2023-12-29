@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import Background from './../../public/background.png'
-
+import Background from "./../../public/background.png";
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -8,6 +7,8 @@ const GlobalStyles = createGlobalStyle`
     --red-text: #FA4C4C;
     --green-bar: #00FF66;
     --green-num:#00D12E;
+    --green-1:#93FF97;
+    --green-2:#12E01A;
     --gray-1: #828282;
     --gray-2: #E1E1E1;
   }
@@ -29,6 +30,6 @@ const GlobalStyles = createGlobalStyle`
   #root {
     height: 100%;
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;
