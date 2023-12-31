@@ -25,18 +25,23 @@ Relive 一期生 Vtuber[**灰妲**][Dada-youtube-url]，要出道三周年啦!!
 
 ## 框架/套件
 
+- [![Vite][Vite]][Vite-url]
 - [![React][React.js]][React-url]
+- [![styled components][styled-components]][styled-components-url]
+- [![tailwind css][tailwind-css]][tailwind-css-url]
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [Dada-youtube-url]: https://www.youtube.com/@ReLiveDaDa
 [Web-link]: https://serser322.github.io/dada-bus-crowdfunding/
-
-<!-- [x]: https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white -->
-
 [Dada-bus-twitter-badge]: https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white&label=%E5%B9%BC%E5%A6%B2%E4%B8%89%E5%91%A8%E5%B9%B4%E5%85%AC%E8%BB%8A%EF%BC%88%E5%8B%9F%E8%B3%87%E4%B8%AD%EF%BC%89&link=https%3A%2F%2Ftwitter.com%2FYoda3year
 [Dada-bus-twitter-url]: https://twitter.com/Yoda3year
+[Vite]: https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E
+[Vite-url]: https://vitejs.dev/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [styled-components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
+[styled-components-url]: https://styled-components.com/
+[tailwind-css]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[tailwind-css-url]: https://tailwindcss.com/
