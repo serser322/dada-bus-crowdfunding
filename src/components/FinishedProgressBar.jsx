@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BusIcon from "../../public/bus_icon.svg";
-import { CheckCircleRound } from "@ricons/material";
+import CheckCircleRound from "@ricons/material/CheckCircleRound";
 
 const StyleBar = styled.div`
   color: var(--green-2);

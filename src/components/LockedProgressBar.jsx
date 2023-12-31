@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BusIcon from "../../public/bus_icon.svg";
-import { LockFilled } from "@ricons/material";
+import LockFilled from "@ricons/material/LockFilled";
 
 const StyleBar = styled.div`
   color: var(--gray-1);

@@ -12,14 +12,12 @@ import CardItem from "../components/CardItem";
 import FinishedProgressBar from "../components/FinishedProgressBar";
 import LockedProgressBar from "../components/LockedProgressBar";
 
-import {
-  AttachMoneyRound,
-  AssistantPhotoOutlined,
-  AvTimerRound,
-  CalendarTodayRound,
-  LocationOnOutlined,
-  AutoAwesomeOutlined,
-} from "@ricons/material";
+import AttachMoneyRound from "@ricons/material/AttachMoneyRound";
+import AssistantPhotoOutlined from "@ricons/material/AssistantPhotoOutlined";
+import AvTimerRound from "@ricons/material/AvTimerRound";
+import CalendarTodayRound from "@ricons/material/CalendarTodayRound";
+import LocationOnOutlined from "@ricons/material/LocationOnOutlined";
+import AutoAwesomeOutlined from "@ricons/material/AutoAwesomeOutlined";
 
 const StyleMain = styled.main`
   width: 100%;
@@ -201,7 +199,6 @@ function Content() {
   };
 
   const imageLoad = () => {
-    console.log(isLoading);
     imgLoadedNum++;
     imgLoadedNum === 2 && setIsLoading(false);
   };

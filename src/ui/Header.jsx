@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { CloseRound, SendFilled } from "@ricons/material";
+import CloseRound from "@ricons/material/CloseRound";
+import SendFilled from "@ricons/material/SendFilled";
 
 const Line = styled.div`
   width: 100vw;
