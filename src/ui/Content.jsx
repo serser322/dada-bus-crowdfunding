@@ -12,14 +12,12 @@ import CardItem from "../components/CardItem";
 import FinishedProgressBar from "../components/FinishedProgressBar";
 import LockedProgressBar from "../components/LockedProgressBar";
 
-import {
-  AttachMoneyRound,
-  AssistantPhotoOutlined,
-  AvTimerRound,
-  CalendarTodayRound,
-  LocationOnOutlined,
-  AutoAwesomeOutlined,
-} from "@ricons/material";
+import AttachMoneyRound from "@ricons/material/AttachMoneyRound";
+import AssistantPhotoOutlined from "@ricons/material/AssistantPhotoOutlined";
+import AvTimerRound from "@ricons/material/AvTimerRound";
+import CalendarTodayRound from "@ricons/material/CalendarTodayRound";
+import LocationOnOutlined from "@ricons/material/LocationOnOutlined";
+import AutoAwesomeOutlined from "@ricons/material/AutoAwesomeOutlined";
 
 const StyleMain = styled.main`
   width: 100%;
@@ -64,7 +62,7 @@ const DataImgStyle = styled.div`
   width: 10rem;
   position: absolute;
   right: 0rem;
-  top: -6rem;
+  top: -6.5rem;
   z-index: -1;
   opacity: 0.7;
 
@@ -117,7 +115,7 @@ const YodaImgStyle = styled.div`
   width: 10rem;
   position: absolute;
   right: 0rem;
-  bottom: -1rem;
+  bottom: -1.5rem;
   z-index: -1;
   opacity: 0.7;
 
@@ -165,10 +163,10 @@ const YodaImgStyle = styled.div`
   }
 `;
 
+const currentAmount = 2711;
+const totalAmount = 38711;
+const updateDate = "2024/01/01";
 const targetAmount = 18000;
-const currentAmount = 511;
-const totalAmount = 36511;
-const updateDate = "2023/12/26";
 const currentState = 2;
 const finishedTitle = "第一";
 const finishedAmount = "36,000";
@@ -201,7 +199,6 @@ function Content() {
   };
 
   const imageLoad = () => {
-    console.log(isLoading);
     imgLoadedNum++;
     imgLoadedNum === 2 && setIsLoading(false);
   };
@@ -224,7 +221,7 @@ function Content() {
         <Loader />
       </div>
       <div className={isLoading ? "hidden" : "block"}>
-        <div className="flex flex-col items-center relative space-y-10 mt-6 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
+        <div className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
           <div className="self-start">
             <Title title1="第二階段" title2="臺北站募資" />
             <Divider />

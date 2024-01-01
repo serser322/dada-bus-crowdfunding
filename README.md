@@ -1,8 +1,47 @@
-# React + Vite
+# 灰妲 X 三周年 公車募資進度網
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 關於
 
-Currently, two official plugins are available:
+Relive 一期生 Vtuber[**灰妲**][Dada-youtube-url]，要出道三周年啦!!
+[灰妲 X 三周年公車募資進度網][Web-link]提供目前募資的最新情況，每周一會進行資訊更新，大家一起來讓灰妲滿街跑吧！
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 網站資訊
+
+可查看最新募資階段、金額、進度等等，與活動推特同步更新。
+
+##### 電腦版
+
+<img src="./public/web-screenshot.jpg" alt="網站截圖" width="80%" >
+
+##### 手機版
+
+<img src="./public/mobile-screenshot.jpg" alt="手機截圖" width="40%" >
+
+## 活動推特
+
+[![Dada bus twitter][Dada-bus-twitter-badge]][Dada-bus-twitter-url]
+
+## 版本 1.0.0
+
+## 框架/套件
+
+- [![Vite][Vite]][Vite-url]
+- [![React][React.js]][React-url]
+- [![styled components][styled-components]][styled-components-url]
+- [![tailwind css][tailwind-css]][tailwind-css-url]
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[Dada-youtube-url]: https://www.youtube.com/@ReLiveDaDa
+[Web-link]: https://serser322.github.io/dada-bus-crowdfunding/
+[Dada-bus-twitter-badge]: https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white&label=%E5%B9%BC%E5%A6%B2%E4%B8%89%E5%91%A8%E5%B9%B4%E5%85%AC%E8%BB%8A%EF%BC%88%E5%8B%9F%E8%B3%87%E4%B8%AD%EF%BC%89&link=https%3A%2F%2Ftwitter.com%2FYoda3year
+[Dada-bus-twitter-url]: https://twitter.com/Yoda3year
+[Vite]: https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E
+[Vite-url]: https://vitejs.dev/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[styled-components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
+[styled-components-url]: https://styled-components.com/
+[tailwind-css]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[tailwind-css-url]: https://tailwindcss.com/

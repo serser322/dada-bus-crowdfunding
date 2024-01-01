@@ -33,12 +33,11 @@ const Bar = styled.div`
     content: "";
     display: block;
     position: relative;
-    z-index: -1;
     width: ${(props) => props.$percentage + "%"};
     height: 100%;
     background-color: var(--green-bar);
     border-radius: 0.8rem;
-    z-index: 0;
+    z-index: -1;
   }
 
   @media (min-width: 640px) {
