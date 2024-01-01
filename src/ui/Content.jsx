@@ -62,7 +62,7 @@ const DataImgStyle = styled.div`
   width: 10rem;
   position: absolute;
   right: 0rem;
-  top: -6rem;
+  top: -6.5rem;
   z-index: -1;
   opacity: 0.7;
 
@@ -115,7 +115,7 @@ const YodaImgStyle = styled.div`
   width: 10rem;
   position: absolute;
   right: 0rem;
-  bottom: -1rem;
+  bottom: -1.5rem;
   z-index: -1;
   opacity: 0.7;
 
@@ -221,7 +221,7 @@ function Content() {
         <Loader />
       </div>
       <div className={isLoading ? "hidden" : "block"}>
-        <div className="flex flex-col items-center relative space-y-10 mt-6 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl md:max-w-3xl lg:max-w-4xl">
+        <div className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
           <div className="self-start">
             <Title title1="第二階段" title2="臺北站募資" />
             <Divider />
