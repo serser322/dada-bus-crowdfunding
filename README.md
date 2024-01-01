@@ -11,7 +11,7 @@ Relive 一期生 Vtuber[**灰妲**][Dada-youtube-url]，要出道三周年啦!!
 
 ##### 電腦版
 
-<img src="https://imgur.com/dQ0Kbss" alt="網站截圖" width="80%" >
+<img src="./public/web-screenshot.jpg" alt="網站截圖" width="80%" >
 
 ##### 手機版
 
