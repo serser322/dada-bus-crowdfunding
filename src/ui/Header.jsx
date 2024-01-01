@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { CloseRound, SendFilled } from "@ricons/material";
+import CloseRound from "@ricons/material/CloseRound";
+import SendFilled from "@ricons/material/SendFilled";
 
 const Line = styled.div`
   width: 100vw;
@@ -13,9 +14,26 @@ const Line = styled.div`
 `;
 
 const TitleGroup = styled.div`
-  width: auto;
+  opacity: 0;
+  animation: bounceIn 1s 0.2s forwards ease;
   @media (min-width: 640px) {
     min-width: 18rem;
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    60% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      opacity: 100%;
+      transform: scale(1);
+    }
   }
 `;
 
