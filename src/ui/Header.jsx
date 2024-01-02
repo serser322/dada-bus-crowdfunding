@@ -49,8 +49,8 @@ function Header() {
   return (
     <header className="flex flex-col justify-between sm:flex-row sm:mt-6">
       <div className="sm:w-full">
-        <Line $color="red" $colorCode="#EB7A82" className="mb-1.5 mt-1" />
-        <Line $color="orange" $colorCode="#FDC879" />
+        <Line $color="red" $colorCode="var(--pink-1)" className="mb-1.5 mt-1" />
+        <Line $color="orange" $colorCode="var(--yellow-1)" />
       </div>
       <TitleGroup className="flex flex-col items-center font-bold mt-6 sm:items-start sm:mx-10 sm:mt-0">
         <div className="flex items-center space-x-4">
@@ -70,8 +70,8 @@ function Header() {
         </div>
       </TitleGroup>
       <div className="hidden sm:flex flex-col justify-end items-end pb-2 sm:w-full">
-        <Line $color="orange" $colorCode="#FDC879" className="mb-1.5" />
-        <Line $color="red" $colorCode="#EB7A82" />
+        <Line $color="orange" $colorCode="var(--yellow-1)" className="mb-1.5" />
+        <Line $color="red" $colorCode="var(--pink-1)" />
       </div>
     </header>
   );

@@ -9,8 +9,10 @@ import Divider from "../components/Divider";
 import ProgressBar from "../components/ProgressBar";
 import Card from "../components/Card";
 import CardItem from "../components/CardItem";
+import Button from "../components/Button";
 import FinishedProgressBar from "../components/FinishedProgressBar";
 import LockedProgressBar from "../components/LockedProgressBar";
+import Modal from "../components/Modal";
 
 import AttachMoneyRound from "@ricons/material/AttachMoneyRound";
 import AssistantPhotoOutlined from "@ricons/material/AssistantPhotoOutlined";
@@ -115,7 +117,7 @@ const YodaImgStyle = styled.div`
   width: 10rem;
   position: absolute;
   right: 0rem;
-  bottom: -1.5rem;
+  bottom: 6.2rem;
   z-index: -1;
   opacity: 0.7;
 
@@ -135,6 +137,7 @@ const YodaImgStyle = styled.div`
   @media (min-width: 640px) {
     width: 11rem;
     right: 0.5rem;
+    bottom: -1.5rem;
     &:after {
       border-radius: 1rem;
       width: 14rem;
@@ -172,7 +175,7 @@ const finishedTitle = "第一";
 const finishedAmount = "36,000";
 const lockedTitle = "第三";
 const lockedAmount = "18,000";
-const deadlineTimestamp = 1706716800000; // 2024/02/01 00:00:00
+const deadlineTimestamp = new Date(2024, 1, 1, 0, 0, 0).getTime(); // 2024/02/01 00:00:00
 
 function Content() {
   const [isLoading, setIsLoading] = useState(true);
@@ -184,6 +187,7 @@ function Content() {
   const [remainHours, setRemainHours] = useState("0");
   const [remainMinutes, setRemainMinutes] = useState("0");
   const [remainSeconds, setRemainSeconds] = useState("0");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getRemainTime = () => {
     const days = Math.trunc(remainTimeSeconds / (60 * 60 * 24));
@@ -201,6 +205,10 @@ function Content() {
   const imageLoad = () => {
     imgLoadedNum++;
     imgLoadedNum === 2 && setIsLoading(false);
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen((newValue) => !newValue);
   };
 
   useEffect(() => {
@@ -339,6 +347,15 @@ function Content() {
           </Card>
           <FinishedProgressBar title={finishedTitle} amount={finishedAmount} />
           <LockedProgressBar title={lockedTitle} amount={lockedAmount} />
+          <div className="w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
+            <Button
+              text="活動簡介"
+              icon={AutoAwesomeOutlined}
+              onClick={toggleModal}
+            />
+            <Button text="募資方式" icon={AutoAwesomeOutlined} />
+            <Button text="募資回饋" icon={AutoAwesomeOutlined} />
+          </div>
         </div>
         <DataImgStyle>
           <img src={DadaImg} alt="" onLoad={imageLoad} />
@@ -347,6 +364,7 @@ function Content() {
           <img src={YodaImg} alt="" onLoad={imageLoad} />
         </YodaImgStyle>
       </div>
+      <Modal isOpen={isModalOpen} title="活動簡介" closeModal={toggleModal} />
     </StyleMain>
   );
 }

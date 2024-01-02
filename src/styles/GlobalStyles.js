@@ -5,6 +5,10 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --color-text: #30475E;
     --red-text: #FA4C4C;
+    --pink-1:#EB7A82;
+    --pink-2:#ff928a;
+    --pink-3:#ba685b;
+    --yellow-1: #FDC879;
     --green-bar: #00FF66;
     --green-num:#00D12E;
     --green-1:#93FF97;
@@ -29,6 +33,27 @@ const GlobalStyles = createGlobalStyle`
 
   #root {
     height: 100%;
+  }
+
+  .ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .ReactModal__Overlay--after-open{
+      opacity: 1;
+  }
+
+  .ReactModal__Overlay--before-close{
+      opacity: 0;
+  }
+
+  .ReactModal__Content {
+
+  }
+
+  .ReactModal__Content--after-open {
+
   }
 `;
 
