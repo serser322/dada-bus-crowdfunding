@@ -20,6 +20,9 @@ import AvTimerRound from "@ricons/material/AvTimerRound";
 import CalendarTodayRound from "@ricons/material/CalendarTodayRound";
 import LocationOnOutlined from "@ricons/material/LocationOnOutlined";
 import AutoAwesomeOutlined from "@ricons/material/AutoAwesomeOutlined";
+import LiveHelpRound from "@ricons/material/LiveHelpRound";
+import TipsAndUpdatesRound from "@ricons/material/TipsAndUpdatesRound";
+import ShoppingBagFilled from "@ricons/material/ShoppingBagFilled";
 
 const StyleMain = styled.main`
   width: 100%;
@@ -187,7 +190,9 @@ function Content() {
   const [remainHours, setRemainHours] = useState("0");
   const [remainMinutes, setRemainMinutes] = useState("0");
   const [remainSeconds, setRemainSeconds] = useState("0");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isIntroModalOpen, setIsIntroModalOpen] = useState(false);
+  const [isAccountInfoModalOpen, setIsAccountInfoModalOpen] = useState(false);
+  const [isRewardModalOpen, setIsRewardModalOpen] = useState(false);
 
   const getRemainTime = () => {
     const days = Math.trunc(remainTimeSeconds / (60 * 60 * 24));
@@ -207,9 +212,10 @@ function Content() {
     imgLoadedNum === 2 && setIsLoading(false);
   };
 
-  const toggleModal = () => {
-    setIsModalOpen((newValue) => !newValue);
-  };
+  const toggleIntroModal = () => setIsIntroModalOpen((newValue) => !newValue);
+  const toggleAccountInfoModal = () =>
+    setIsAccountInfoModalOpen((newValue) => !newValue);
+  const toggleRewardModal = () => setIsRewardModalOpen((newValue) => !newValue);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -350,11 +356,19 @@ function Content() {
           <div className="w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
             <Button
               text="活動簡介"
-              icon={AutoAwesomeOutlined}
-              onClick={toggleModal}
+              icon={TipsAndUpdatesRound}
+              onClick={toggleIntroModal}
             />
-            <Button text="募資方式" icon={AutoAwesomeOutlined} />
-            <Button text="募資回饋" icon={AutoAwesomeOutlined} />
+            <Button
+              text="募資方式"
+              icon={LiveHelpRound}
+              onClick={toggleAccountInfoModal}
+            />
+            <Button
+              text="募資回饋"
+              icon={ShoppingBagFilled}
+              onClick={toggleRewardModal}
+            />
           </div>
         </div>
         <DataImgStyle>
@@ -364,7 +378,36 @@ function Content() {
           <img src={YodaImg} alt="" onLoad={imageLoad} />
         </YodaImgStyle>
       </div>
-      <Modal isOpen={isModalOpen} title="活動簡介" closeModal={toggleModal} />
+      <Modal
+        isOpen={isIntroModalOpen}
+        title="活動簡介"
+        closeModal={toggleIntroModal}
+      >
+        我們將計劃2024/3/20-4/20，在台灣多處(雙北、台中、高雄)以募資解鎖方式散播雞腿幫教義，慶祝灰妲出道三周年。
+      </Modal>
+      <Modal
+        isOpen={isAccountInfoModalOpen}
+        title="募資方式"
+        closeModal={toggleAccountInfoModal}
+      >
+        <div>匯款至 Line Bank 銀行帳戶</div>
+        <div>
+          銀行：<strong>824 連線商業銀行</strong>
+        </div>
+        <div>
+          帳號：<strong>111014714985</strong>
+        </div>
+        <div>時間：即日起至2024/1/31</div>
+      </Modal>
+      <Modal
+        isOpen={isRewardModalOpen}
+        title="募資回饋"
+        closeModal={toggleRewardModal}
+      >
+        <div>
+          單次匯款滿五百以上，可憑匯款證明在場次(如FF/CWT...)，向(帆/楠)索取明信片一張，同一帳號匯款累積兩千以上，填寫回饋表單贈送搖搖立牌。
+        </div>
+      </Modal>
     </StyleMain>
   );
 }

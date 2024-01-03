@@ -37,23 +37,25 @@ const GlobalStyles = createGlobalStyle`
 
   .ReactModal__Overlay {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
   }
 
   .ReactModal__Overlay--after-open{
-      opacity: 1;
+    opacity: 1;
   }
 
   .ReactModal__Overlay--before-close{
-      opacity: 0;
+    opacity: 0;
   }
 
   .ReactModal__Content {
+    max-height: 300px;
+    height: 100%;
+    width: 300px;
 
-  }
-
-  .ReactModal__Content--after-open {
-
+    @media (min-width: 640px) {
+      width: 400px;
+    }
   }
 `;
 
