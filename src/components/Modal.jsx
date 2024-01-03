@@ -16,7 +16,12 @@ const customStyles = {
 
 function Modal({ isOpen, title, closeModal, children }) {
   return (
-    <ReactModal isOpen={isOpen} style={customStyles} ariaHideApp={false}>
+    <ReactModal
+      isOpen={isOpen}
+      style={customStyles}
+      ariaHideApp={false}
+      closeTimeoutMS={300}
+    >
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-semibold">{title}</h2>
         <button
