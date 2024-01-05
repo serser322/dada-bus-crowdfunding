@@ -28,20 +28,41 @@ const Bar = styled.div`
   height: 1.7rem;
   box-shadow: 1px 3px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 1rem;
+  overflow: hidden;
 
   &:before {
     content: "";
     display: block;
     position: relative;
-    width: ${(props) => props.$percentage + "%"};
+    right: ${(props) => 100 - props.$percentage + "%"};
+    /* right: 0; */
+    /* width: ${(props) => props.$percentage + "%"}; */
+    width: 100%;
     height: 100%;
-    background-color: var(--green-bar);
+    background-size: 50% 100%;
+    background-image: linear-gradient(
+      110deg,
+      var(--green-bar) 0 30%,
+      #a8ffbb 45% 55%,
+      var(--green-bar) 70% 100%
+    );
     border-radius: 0.8rem;
     z-index: -1;
+    animation: bgAnimate 1.5s linear infinite;
   }
 
   @media (min-width: 640px) {
     height: 2.5rem;
+  }
+
+  @keyframes bgAnimate {
+    0% {
+      background-position: 0;
+    }
+
+    100% {
+      background-position: 100%;
+    }
   }
 `;
 

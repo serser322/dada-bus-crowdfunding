@@ -29,7 +29,14 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     background-image: url(${Background});
     background-size: 60%;
+    /* animation: a 10s linear infinite; */
   }
+  /* @keyframes a {
+    to {
+      background-position: 0 200%;
+    }
+  } */
+  
 
   #root {
     height: 100%;
@@ -52,11 +59,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .ReactModal__Content {
-    max-height: 300px;
+    max-height: 330px;
     height: 100%;
     width: 300px;
 
     @media (min-width: 640px) {
+      max-height: 300px;
       width: 400px;
     }
   }

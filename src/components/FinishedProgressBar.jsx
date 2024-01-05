@@ -29,9 +29,17 @@ const Bar = styled.div`
     z-index: -1;
     width: 100%;
     height: 100%;
-    background-color: var(--green-1);
+    /* background-color: var(--green-1); */
+    background-size: 50% 100%;
+    background-image: linear-gradient(
+      110deg,
+      var(--green-1) 0 30%,
+      #b5ffc5 45% 55%,
+      var(--green-1) 70% 100%
+    );
     border-radius: 1rem;
     z-index: 0;
+    animation: bgAnimate 1.5s linear infinite;
   }
 
   .check_icon {
@@ -49,6 +57,16 @@ const Bar = styled.div`
       top: -18px;
       left: calc(50% - 0.8rem);
       width: 1.6rem;
+    }
+  }
+
+  @keyframes bgAnimate {
+    0% {
+      background-position: 0;
+    }
+
+    100% {
+      background-position: 100%;
     }
   }
 `;
