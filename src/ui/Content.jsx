@@ -505,7 +505,16 @@ function Content() {
         closeModal={toggleRewardModal}
       >
         <div>
-          單次匯款滿五百以上，可憑匯款證明在場次(如FF/CWT...)，向(帆/楠)索取明信片一張，同一帳號匯款累積兩千以上，填寫回饋表單贈送搖搖立牌。
+          單次匯款滿五百以上，可憑匯款證明在場次(如FF/CWT...)，向(帆/楠)索取明信片一張，同一帳號匯款累積兩千以上，填寫
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeY2CMaUNRrr90Xc7KqgnQtw58SnMWPg9jzfZYtYt0iEIzQDw/viewform"
+            target="_blank"
+            className="underline hover:text-amber-300 active:text-amber-500"
+            rel="noreferrer"
+          >
+            回饋表單
+          </a>
+          贈送搖搖立牌。
         </div>
       </Modal>
     </StyleMain>
