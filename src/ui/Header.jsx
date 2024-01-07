@@ -2,6 +2,34 @@ import styled from "styled-components";
 import CloseRound from "@ricons/material/CloseRound";
 import SendFilled from "@ricons/material/SendFilled";
 
+const LeftLinesAnime = styled.div`
+  animation: pushInFromLeft 1s forwards ease-out;
+
+  @keyframes pushInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+`;
+
+const RightLinesAnime = styled.div`
+  animation: pushInFromRight 1s forwards ease-out;
+
+  @keyframes pushInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+`;
+
 const Line = styled.div`
   width: 100vw;
   height: ${(props) => (props.$color === "red" ? "6px" : "3px")};
@@ -14,8 +42,7 @@ const Line = styled.div`
 `;
 
 const TitleGroup = styled.div`
-  opacity: 0;
-  animation: bounceIn 1s 0.2s forwards ease;
+  animation: bounceIn 1s 0.2s backwards ease;
   @media (min-width: 640px) {
     min-width: 18rem;
   }
@@ -48,10 +75,10 @@ const TitleText = styled.p`
 function Header() {
   return (
     <header className="flex flex-col justify-between sm:flex-row sm:mt-6">
-      <div className="sm:w-full">
+      <LeftLinesAnime className="sm:w-full">
         <Line $color="red" $colorCode="var(--pink-1)" className="mb-1.5 mt-1" />
         <Line $color="orange" $colorCode="var(--yellow-1)" />
-      </div>
+      </LeftLinesAnime>
       <TitleGroup className="flex flex-col items-center font-bold mt-6 sm:items-start sm:mx-10 sm:mt-0">
         <div className="flex items-center space-x-4">
           <TitleText>
@@ -69,10 +96,10 @@ function Header() {
           <TitleText>公車募資計畫</TitleText>
         </div>
       </TitleGroup>
-      <div className="hidden sm:flex flex-col justify-end items-end pb-2 sm:w-full">
+      <RightLinesAnime className="hidden sm:flex flex-col justify-end items-end pb-2 sm:w-full">
         <Line $color="orange" $colorCode="var(--yellow-1)" className="mb-1.5" />
         <Line $color="red" $colorCode="var(--pink-1)" />
-      </div>
+      </RightLinesAnime>
     </header>
   );
 }

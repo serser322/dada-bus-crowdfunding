@@ -38,6 +38,44 @@ const StyleMain = styled.main`
   }
 `;
 
+const Container = styled.div`
+  .fade_in_anime:first-child {
+    opacity: 0;
+    animation: FadeIn 1s 0.7s forwards ease;
+  }
+
+  .fade_in_anime:nth-child(2) {
+    position: relative;
+    opacity: 0;
+    animation: FadeIn 1s 1.2s forwards ease;
+  }
+
+  .fade_in_anime:nth-child(3) {
+    position: relative;
+    opacity: 0;
+    animation: FadeIn 1s 1.7s forwards ease;
+  }
+
+  .fade_in_anime:nth-child(4) {
+    position: relative;
+    opacity: 0;
+    animation: FadeIn 1s 2.2s forwards ease;
+  }
+
+  @keyframes FadeIn {
+    0% {
+      transform: translateY(-20px) rotateX(25deg);
+      opacity: 0;
+    }
+
+    100% {
+      top: 0;
+      transform: translateY(0px) rotateX(0);
+      opacity: 1;
+    }
+  }
+`;
+
 const NumberText = styled.span`
   color: var(--green-num);
   font-size: 1.2rem;
@@ -66,10 +104,11 @@ const SubText = styled.span`
 const DataImgStyle = styled.div`
   width: 10rem;
   position: absolute;
-  right: 0rem;
+  right: -1rem;
   top: -6.5rem;
   z-index: -1;
   opacity: 0.7;
+  animation: DadaImgFadeIn 1s 2.2s backwards;
 
   &:after {
     content: "";
@@ -82,6 +121,18 @@ const DataImgStyle = styled.div`
     right: 0;
     bottom: 0;
     z-index: -2;
+  }
+
+  @keyframes DadaImgFadeIn {
+    0% {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 0.7;
+    }
   }
 
   @media (min-width: 640px) {
@@ -109,9 +160,23 @@ const DataImgStyle = styled.div`
   @media (min-width: 1280px) {
     width: 16rem;
     opacity: 1;
+    animation: DadaImgFadeIn 1s 2.2s backwards;
+
     &:after {
       width: 20rem;
       height: 10rem;
+    }
+
+    @keyframes DadaImgFadeIn {
+      0% {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   }
 `;
@@ -123,6 +188,7 @@ const YodaImgStyle = styled.div`
   bottom: 6.2rem;
   z-index: -1;
   opacity: 0.7;
+  animation: YodaImgFadeIn 1s 2.2s backwards;
 
   &:after {
     content: "";
@@ -135,6 +201,18 @@ const YodaImgStyle = styled.div`
     right: 0;
     bottom: 0;
     z-index: -2;
+  }
+
+  @keyframes YodaImgFadeIn {
+    0% {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 0.7;
+    }
   }
 
   @media (min-width: 640px) {
@@ -162,9 +240,22 @@ const YodaImgStyle = styled.div`
     width: 16rem;
     bottom: -2rem;
     opacity: 1;
+    animation: YodaImgFadeIn 1s 2.2s backwards;
     &:after {
       width: 20rem;
       height: 10rem;
+    }
+
+    @keyframes YodaImgFadeIn {
+      0% {
+        transform: translateX(20px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   }
 `;
@@ -235,125 +326,134 @@ function Content() {
         <Loader />
       </div>
       <div className={isLoading ? "hidden" : "block"}>
-        <div className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
-          <div className="self-start">
-            <Title title1="第二階段" title2="臺北站募資" />
+        <Container className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
+          <div className="fade_in_anime w-full">
+            <div className="self-start">
+              <Title title1="第二階段" title2="臺北站募資" />
+              <Divider />
+            </div>
+            <ProgressBar
+              targetAmount={targetAmount}
+              currentAmount={currentAmount}
+              updateDate={updateDate}
+            />
+            {/* <div className="self-end !mt-0 visible ">
             <Divider />
+          </div> */}
           </div>
-          <ProgressBar
-            targetAmount={targetAmount}
-            currentAmount={currentAmount}
-            updateDate={updateDate}
-          />
-          <div className="self-start !mt-0 invisible ">
-            <Divider />
-          </div>
-          <Card>
-            <CardItem icon={AttachMoneyRound} title="目前金額">
-              <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                <SubText className="mr-2">NT$</SubText>
-                <NumberText>
-                  <CountUp
-                    start={0}
-                    end={currentAmount}
-                    duration={2.8}
-                    delay={0.1}
-                  />
-                </NumberText>
-              </div>
-            </CardItem>
-
-            {/* 螢幕寬度不同，更換目標金額的排列順序 */}
-            <div className="md:hidden">
-              <CardItem icon={AssistantPhotoOutlined} title="目標金額">
+          <div className="fade_in_anime w-full">
+            <Card>
+              <CardItem icon={AttachMoneyRound} title="目前金額">
                 <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
                   <SubText className="mr-2">NT$</SubText>
                   <NumberText>
                     <CountUp
                       start={0}
-                      end={targetAmount}
-                      duration={2.8}
-                      delay={0.1}
+                      end={currentAmount}
+                      duration={3}
+                      delay={1.2}
                     />
                   </NumberText>
                 </div>
               </CardItem>
-            </div>
 
-            <CardItem icon={AvTimerRound} title="募資倒數">
-              <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                <NumberText className="mr-2">{remainDays}</NumberText>
-                <SubText className="mr-4">天</SubText>
-                <NumberText className="sm:mr-1">{remainHours}</NumberText>
-                <SubText className="sm:mr-1">
-                  <span className="text-base">：</span>
-                </SubText>
-                <NumberText className="sm:mr-1">{remainMinutes}</NumberText>
-                <SubText className="sm:mr-1">
-                  <span className="text-base">：</span>
-                </SubText>
-                <NumberText>{remainSeconds}</NumberText>
+              {/* 螢幕寬度不同，更換目標金額的排列順序 */}
+              <div className="md:hidden">
+                <CardItem icon={AssistantPhotoOutlined} title="目標金額">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <SubText className="mr-2">NT$</SubText>
+                    <NumberText>
+                      <CountUp
+                        start={0}
+                        end={targetAmount}
+                        duration={3}
+                        delay={1.2}
+                      />
+                    </NumberText>
+                  </div>
+                </CardItem>
               </div>
-            </CardItem>
-            {/* 螢幕寬度不同，更換目標金額的排列順序 */}
-            <div className="hidden md:block">
-              <CardItem
-                icon={AssistantPhotoOutlined}
-                title="目標金額"
-                className="hidden md:block"
-              >
+
+              <CardItem icon={AvTimerRound} title="募資倒數">
+                <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                  <NumberText className="mr-2">{remainDays}</NumberText>
+                  <SubText className="mr-4">天</SubText>
+                  <NumberText className="sm:mr-1">{remainHours}</NumberText>
+                  <SubText className="sm:mr-1">
+                    <span className="text-base">：</span>
+                  </SubText>
+                  <NumberText className="sm:mr-1">{remainMinutes}</NumberText>
+                  <SubText className="sm:mr-1">
+                    <span className="text-base">：</span>
+                  </SubText>
+                  <NumberText>{remainSeconds}</NumberText>
+                </div>
+              </CardItem>
+              {/* 螢幕寬度不同，更換目標金額的排列順序 */}
+              <div className="hidden md:block">
+                <CardItem
+                  icon={AssistantPhotoOutlined}
+                  title="目標金額"
+                  className="hidden md:block"
+                >
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <SubText className="mr-2">NT$</SubText>
+                    <NumberText>
+                      <CountUp
+                        start={0}
+                        end={targetAmount}
+                        duration={3}
+                        delay={1.2}
+                      />
+                    </NumberText>
+                  </div>
+                </CardItem>
+              </div>
+              <CardItem icon={CalendarTodayRound} title="截止時間">
+                <span>2024 年 1 月 31 日 23:59</span>
+              </CardItem>
+
+              <CardItem icon={LocationOnOutlined} title="階段狀態">
+                <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                  <NumberText className="mr-2">
+                    <CountUp
+                      start={0}
+                      end={currentState}
+                      duration={3}
+                      delay={1.2}
+                    />
+                  </NumberText>
+                  <SubText className="mr-1">
+                    <span className="mr-2">
+                      <span className="text-base">nd</span> 階段
+                    </span>
+                  </SubText>
+                  <span>募資中</span>
+                </div>
+              </CardItem>
+              <CardItem icon={AutoAwesomeOutlined} title="當前總額">
                 <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
                   <SubText className="mr-2">NT$</SubText>
                   <NumberText>
                     <CountUp
                       start={0}
-                      end={targetAmount}
-                      duration={2.8}
-                      delay={0.1}
+                      end={totalAmount}
+                      duration={3}
+                      delay={1.2}
                     />
                   </NumberText>
                 </div>
               </CardItem>
-            </div>
-            <CardItem icon={CalendarTodayRound} title="截止時間">
-              <span>2024 年 1 月 31 日 23:59</span>
-            </CardItem>
-
-            <CardItem icon={LocationOnOutlined} title="階段狀態">
-              <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                <NumberText className="mr-2">
-                  <CountUp
-                    start={0}
-                    end={currentState}
-                    duration={0.8}
-                    delay={0.3}
-                  />
-                </NumberText>
-                <SubText className="mr-1">
-                  <span className="mr-2">
-                    <span className="text-base">nd</span> 階段
-                  </span>
-                </SubText>
-                <span>募資中</span>
-              </div>
-            </CardItem>
-            <CardItem icon={AutoAwesomeOutlined} title="當前總額">
-              <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                <SubText className="mr-2">NT$</SubText>
-                <NumberText>
-                  <CountUp
-                    start={0}
-                    end={totalAmount}
-                    duration={2.8}
-                    delay={0.1}
-                  />
-                </NumberText>
-              </div>
-            </CardItem>
-          </Card>
-          <FinishedProgressBar title={finishedTitle} amount={finishedAmount} />
-          <LockedProgressBar title={lockedTitle} amount={lockedAmount} />
-          <div className="w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
+            </Card>
+          </div>
+          <div className="fade_in_anime w-full">
+            <FinishedProgressBar
+              title={finishedTitle}
+              amount={finishedAmount}
+            />
+            <LockedProgressBar title={lockedTitle} amount={lockedAmount} />
+          </div>
+          <div className="fade_in_anime w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
             <Button
               text="活動簡介"
               icon={TipsAndUpdatesRound}
@@ -370,7 +470,7 @@ function Content() {
               onClick={toggleRewardModal}
             />
           </div>
-        </div>
+        </Container>
         <DataImgStyle>
           <img src={DadaImg} alt="" onLoad={imageLoad} />
         </DataImgStyle>
