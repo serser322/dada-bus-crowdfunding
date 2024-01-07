@@ -29,7 +29,14 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     background-image: url(${Background});
     background-size: 60%;
+    /* animation: a 10s linear infinite; */
   }
+  /* @keyframes a {
+    to {
+      background-position: 0 200%;
+    }
+  } */
+  
 
   #root {
     height: 100%;
@@ -37,23 +44,29 @@ const GlobalStyles = createGlobalStyle`
 
   .ReactModal__Overlay {
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transform: translateY(-50px);
+    transition: all 0.2s ease-in-out;
   }
 
   .ReactModal__Overlay--after-open{
-      opacity: 1;
+    opacity: 1;
+    transform: translateY(0px);
   }
 
   .ReactModal__Overlay--before-close{
-      opacity: 0;
+    opacity: 0;
+    transform: translateY(-50px);
   }
 
   .ReactModal__Content {
+    max-height: 330px;
+    height: 100%;
+    width: 300px;
 
-  }
-
-  .ReactModal__Content--after-open {
-
+    @media (min-width: 640px) {
+      max-height: 300px;
+      width: 400px;
+    }
   }
 `;
 

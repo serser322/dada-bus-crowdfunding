@@ -17,7 +17,7 @@ const FooterDivider = styled.div`
 
 function Footer() {
   return (
-    <footer className="grid grid-cols-1 justify-items-center py-3 text-white bg-[#3c3c3c] lg:grid-cols-[minmax(300px,_1.7fr)_minmax(300px,_0.3fr)] lg:h-14 lg:py-0 lg:px-8 lg:justify-items-stretch xl:pl-16">
+    <footer className="grid grid-cols-1 justify-items-center py-3 text-white bg-[#3c3c3c] mt-5 lg:grid-cols-[minmax(300px,_1.7fr)_minmax(300px,_0.3fr)] lg:h-14 lg:py-0 lg:px-8 lg:justify-items-stretch xl:pl-16">
       <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-4 md:gap-x-8">
         <FooterLink
           iconImg={XIcon}
