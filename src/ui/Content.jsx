@@ -260,9 +260,9 @@ const YodaImgStyle = styled.div`
   }
 `;
 
-const currentAmount = 2711;
-const totalAmount = 38711;
-const updateDate = "2024/01/01";
+const currentAmount = 3711;
+const totalAmount = 39711;
+const updateDate = "2024/01/08";
 const targetAmount = 18000;
 const currentState = 2;
 const finishedTitle = "第一";
