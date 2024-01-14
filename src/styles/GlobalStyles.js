@@ -29,13 +29,8 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     background-image: url(${Background});
     background-size: 60%;
-    /* animation: a 10s linear infinite; */
+    /* overflow-x:hidden */
   }
-  /* @keyframes a {
-    to {
-      background-position: 0 200%;
-    }
-  } */
   
 
   #root {
