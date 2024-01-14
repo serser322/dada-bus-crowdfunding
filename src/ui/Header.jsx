@@ -74,7 +74,7 @@ const TitleText = styled.p`
 
 function Header() {
   return (
-    <header className="flex flex-col justify-between sm:flex-row sm:mt-6">
+    <header className="flex flex-col justify-between overflow-hidden sm:flex-row sm:mt-6">
       <LeftLinesAnime className="sm:w-full">
         <Line $color="red" $colorCode="var(--pink-1)" className="mb-1.5 mt-1" />
         <Line $color="orange" $colorCode="var(--yellow-1)" />

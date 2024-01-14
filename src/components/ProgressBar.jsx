@@ -47,7 +47,7 @@ const Bar = styled.div`
     border-radius: 0.8rem;
     z-index: -1;
     animation: progressGrow 1s 0.7s backwards ease,
-      bgAnimate 1.5s linear infinite;
+      bgAnimate 1.8s linear infinite;
   }
 
   @media (min-width: 640px) {
