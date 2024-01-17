@@ -482,6 +482,7 @@ function Content() {
         isOpen={isIntroModalOpen}
         title="活動簡介"
         closeModal={toggleIntroModal}
+        key="introModal"
       >
         我們將計劃2024/3/20-4/20，在台灣多處(雙北、台中、高雄)以募資解鎖方式散播雞腿幫教義，慶祝灰妲出道三周年。
       </Modal>
@@ -489,6 +490,7 @@ function Content() {
         isOpen={isAccountInfoModalOpen}
         title="募資方式"
         closeModal={toggleAccountInfoModal}
+        key="accountInfoModal"
       >
         <div>匯款至 Line Bank 銀行帳戶</div>
         <div>
@@ -503,6 +505,7 @@ function Content() {
         isOpen={isRewardModalOpen}
         title="募資回饋"
         closeModal={toggleRewardModal}
+        key="rewardModal"
       >
         <div>
           單次匯款滿五百以上，可憑匯款證明在場次(如FF/CWT...)，向(帆/楠)索取明信片一張，同一帳號匯款累積兩千以上，填寫
