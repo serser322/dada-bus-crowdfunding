@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoaderStyle = styled.div`
+const Loader = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -42,8 +42,8 @@ const LoaderStyle = styled.div`
   }
 `;
 
-function Loader() {
-  return <LoaderStyle />;
-}
+// function Loader() {
+//   return <LoaderStyle />;
+// }
 
 export default Loader;

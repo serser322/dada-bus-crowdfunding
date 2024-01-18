@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FooterLink from "../components/FooterLink";
+import FooterLink from "../ui/FooterLink";
 import XIcon from "../../public/x_icon.svg";
 import DocumentIcon from "../../public/edit-document-icon.svg";
 import YoutubeIcon from "../../public/youtube-icon.svg";
@@ -44,7 +44,7 @@ function Footer() {
       <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-4 md:gap-x-8">
         {linkList.map((item) => (
           <FooterLink
-            iconImg={XIcon}
+            iconImg={item.iconImg}
             text={item.text}
             link={item.link}
             key={item.text}

@@ -3,16 +3,16 @@ import { useState, useEffect } from "react";
 import DadaImg from "../../public/vts-2022-11-02_06h44_01.png";
 import YodaImg from "../../public/vts-2021-12-25_22h52_13.png";
 import CountUp from "react-countup";
-import Loader from "../components/Loader";
-import Title from "../components/Title";
-import Divider from "../components/Divider";
-import ProgressBar from "../components/ProgressBar";
-import Card from "../components/Card";
-import CardItem from "../components/CardItem";
-import Button from "../components/Button";
-import FinishedProgressBar from "../components/FinishedProgressBar";
-import LockedProgressBar from "../components/LockedProgressBar";
-import Modal from "../components/Modal";
+import Loader from "../ui/Loader";
+import Title from "../ui/Title";
+import Divider from "../ui/Divider";
+import ProgressBar from "../ui/ProgressBar";
+import Card from "../ui/Card";
+import CardItem from "../ui/CardItem";
+import Button from "../ui/Button";
+import FinishedProgressBar from "../ui/FinishedProgressBar";
+import LockedProgressBar from "../ui/LockedProgressBar";
+import Modal from "../ui/Modal";
 
 import AttachMoneyRound from "@ricons/material/AttachMoneyRound";
 import AssistantPhotoOutlined from "@ricons/material/AssistantPhotoOutlined";
@@ -24,7 +24,7 @@ import LiveHelpRound from "@ricons/material/LiveHelpRound";
 import TipsAndUpdatesRound from "@ricons/material/TipsAndUpdatesRound";
 import ShoppingBagFilled from "@ricons/material/ShoppingBagFilled";
 
-const StyleMain = styled.main`
+const StyledContent = styled.main`
   width: 100%;
   margin: 0 auto;
   position: relative;
@@ -104,7 +104,7 @@ const SubText = styled.span`
 const DataImgStyle = styled.div`
   width: 10rem;
   position: absolute;
-  right: -1rem;
+  right: 0;
   top: -6.5rem;
   z-index: -1;
   opacity: 0.7;
@@ -292,10 +292,10 @@ function Content() {
     ).slice(-2);
     const minutes = ("0" + Math.trunc((remainTimeSeconds / 60) % 60)).slice(-2);
     const seconds = ("0" + Math.trunc(remainTimeSeconds % 60)).slice(-2);
-    setRemainDays(days);
-    setRemainHours(hours);
-    setRemainMinutes(minutes);
-    setRemainSeconds(seconds);
+    setRemainDays(() => days);
+    setRemainHours(() => hours);
+    setRemainMinutes(() => minutes);
+    setRemainSeconds(() => seconds);
   };
 
   const imageLoad = () => {
@@ -308,6 +308,24 @@ function Content() {
     setIsAccountInfoModalOpen((newValue) => !newValue);
   const toggleRewardModal = () => setIsRewardModalOpen((newValue) => !newValue);
 
+  const buttons = [
+    {
+      text: "活動簡介",
+      icon: TipsAndUpdatesRound,
+      event: toggleIntroModal,
+    },
+    {
+      text: "募資方式",
+      icon: LiveHelpRound,
+      event: toggleAccountInfoModal,
+    },
+    {
+      text: "募資回饋",
+      icon: ShoppingBagFilled,
+      event: toggleRewardModal,
+    },
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
       setRemainTimeSeconds((newValue) => newValue - 1);
@@ -317,7 +335,7 @@ function Content() {
   }, [remainTimeSeconds]);
 
   return (
-    <StyleMain>
+    <StyledContent>
       <div
         className={
           "flex justify-center my-20 " + " " + (isLoading ? "" : "hidden")
@@ -454,7 +472,15 @@ function Content() {
             <LockedProgressBar title={lockedTitle} amount={lockedAmount} />
           </div>
           <div className="fade_in_anime w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
-            <Button
+            {buttons.map((item) => (
+              <Button
+                text={item.text}
+                icon={item.icon}
+                onClick={item.event}
+                key={item.text}
+              />
+            ))}
+            {/* <Button
               text="活動簡介"
               icon={TipsAndUpdatesRound}
               onClick={toggleIntroModal}
@@ -468,7 +494,7 @@ function Content() {
               text="募資回饋"
               icon={ShoppingBagFilled}
               onClick={toggleRewardModal}
-            />
+            /> */}
           </div>
         </Container>
         <DataImgStyle>
@@ -520,7 +546,7 @@ function Content() {
           贈送搖搖立牌。
         </div>
       </Modal>
-    </StyleMain>
+    </StyledContent>
   );
 }
 

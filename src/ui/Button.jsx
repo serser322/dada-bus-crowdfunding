@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ButtonStyle = styled.button`
+const StyledButton = styled.button`
   border: 3px solid white;
   background-color: var(--pink-1);
   border-radius: 15px;
@@ -19,7 +19,7 @@ const ButtonStyle = styled.button`
 
 function Button({ text, icon: Icon, onClick }) {
   return (
-    <ButtonStyle
+    <StyledButton
       className="flex justify-center items-center text-white text-sm md:text-base p-2"
       onClick={onClick}
     >
@@ -27,7 +27,7 @@ function Button({ text, icon: Icon, onClick }) {
         <Icon />
       </span>
       <span className="tracking-[0.2rem]">{text}</span>
-    </ButtonStyle>
+    </StyledButton>
   );
 }
 

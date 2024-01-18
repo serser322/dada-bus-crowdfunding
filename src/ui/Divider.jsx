@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const DividerLine = styled.div`
+const Divider = styled.div`
   display: block;
   width: 5.4rem;
   height: 1px;
@@ -13,8 +13,8 @@ const DividerLine = styled.div`
   }
 `;
 
-function Divider() {
-  return <DividerLine />;
-}
+// function Divider() {
+//   return <DividerLine />;
+// }
 
 export default Divider;
