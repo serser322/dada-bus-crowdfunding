@@ -285,19 +285,6 @@ function Content() {
   const [isAccountInfoModalOpen, setIsAccountInfoModalOpen] = useState(false);
   const [isRewardModalOpen, setIsRewardModalOpen] = useState(false);
 
-  const getRemainTime = () => {
-    const days = Math.trunc(remainTimeSeconds / (60 * 60 * 24));
-    const hours = (
-      "0" + Math.trunc((remainTimeSeconds / (60 * 60)) % 24)
-    ).slice(-2);
-    const minutes = ("0" + Math.trunc((remainTimeSeconds / 60) % 60)).slice(-2);
-    const seconds = ("0" + Math.trunc(remainTimeSeconds % 60)).slice(-2);
-    setRemainDays(() => days);
-    setRemainHours(() => hours);
-    setRemainMinutes(() => minutes);
-    setRemainSeconds(() => seconds);
-  };
-
   const imageLoad = () => {
     imgLoadedNum++;
     imgLoadedNum === 2 && setIsLoading(false);
@@ -330,7 +317,24 @@ function Content() {
     const interval = setInterval(() => {
       setRemainTimeSeconds((newValue) => newValue - 1);
     }, 1000);
+
+    const getRemainTime = () => {
+      const days = Math.trunc(remainTimeSeconds / (60 * 60 * 24));
+      const hours = (
+        "0" + Math.trunc((remainTimeSeconds / (60 * 60)) % 24)
+      ).slice(-2);
+      const minutes = ("0" + Math.trunc((remainTimeSeconds / 60) % 60)).slice(
+        -2
+      );
+      const seconds = ("0" + Math.trunc(remainTimeSeconds % 60)).slice(-2);
+      setRemainDays(days);
+      setRemainHours(hours);
+      setRemainMinutes(minutes);
+      setRemainSeconds(seconds);
+    };
+
     getRemainTime();
+
     return () => clearInterval(interval);
   }, [remainTimeSeconds]);
 
