@@ -29,7 +29,6 @@ const GlobalStyles = createGlobalStyle`
     position: relative;
     background-image: url(${Background});
     background-size: 60%;
-    /* overflow-x:hidden */
   }
   
 

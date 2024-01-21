@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FooterLink from "../components/FooterLink";
+import FooterLink from "../ui/FooterLink";
 import XIcon from "../../public/x_icon.svg";
 import DocumentIcon from "../../public/edit-document-icon.svg";
 import YoutubeIcon from "../../public/youtube-icon.svg";
@@ -15,11 +15,42 @@ const FooterDivider = styled.div`
   }
 `;
 
+const linkList = [
+  {
+    iconImg: XIcon,
+    text: "幼妲三周年公車",
+    link: "https://twitter.com/Yoda3year",
+  },
+  {
+    iconImg: DocumentIcon,
+    text: "兩千回饋表單",
+    link: "https://docs.google.com/forms/d/e/1FAIpQLSeY2CMaUNRrr90Xc7KqgnQtw58SnMWPg9jzfZYtYt0iEIzQDw/viewform",
+  },
+  {
+    iconImg: XIcon,
+    text: "活動聯絡人-程帆",
+    link: "https://twitter.com/chengfan0830",
+  },
+  {
+    iconImg: YoutubeIcon,
+    text: "ReLive_灰妲 DaDa",
+    link: "https://www.youtube.com/@ReLiveDaDa",
+  },
+];
+
 function Footer() {
   return (
     <footer className="grid grid-cols-1 justify-items-center py-3 text-white bg-[#3c3c3c] mt-5 lg:grid-cols-[minmax(300px,_1.7fr)_minmax(300px,_0.3fr)] lg:h-14 lg:py-0 lg:px-8 lg:justify-items-stretch xl:pl-16">
       <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-4 md:gap-x-8">
-        <FooterLink
+        {linkList.map((item) => (
+          <FooterLink
+            iconImg={item.iconImg}
+            text={item.text}
+            link={item.link}
+            key={item.text}
+          />
+        ))}
+        {/* <FooterLink
           iconImg={XIcon}
           text="幼妲三周年公車"
           link="https://twitter.com/Yoda3year"
@@ -41,7 +72,7 @@ function Footer() {
           iconImg={YoutubeIcon}
           text="ReLive_灰妲 DaDa"
           link="https://www.youtube.com/@ReLiveDaDa"
-        />
+        /> */}
       </div>
       <div className="grid grid-cols-1 justify-items-center lg:justify-self-end lg:flex lg:items-center">
         <FooterDivider className="mx-2 my-4 sm:my-3 lg:my-2 lg:mr-4" />
