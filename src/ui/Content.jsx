@@ -262,14 +262,14 @@ const YodaImgStyle = styled.div`
 
 const currentAmount = 8711;
 const totalAmount = 44711;
-const updateDate = "2024/01/22";
+const updateDate = "2024/01/28";
 const targetAmount = 18000;
 const currentState = 2;
 const finishedTitle = "第一";
 const finishedAmount = "36,000";
 const lockedTitle = "第三";
 const lockedAmount = "18,000";
-const deadlineTimestamp = new Date(2024, 1, 1, 0, 0, 0).getTime(); // 2024/02/01 00:00:00
+const deadlineTimestamp = new Date(2024, 1, 14, 0, 0, 0).getTime(); // 2024/02/14 00:00:00
 
 function Content() {
   const [isLoading, setIsLoading] = useState(true);
@@ -432,7 +432,7 @@ function Content() {
                 </CardItem>
               </div>
               <CardItem icon={CalendarTodayRound} title="截止時間">
-                <span>2024 年 1 月 31 日 23:59</span>
+                <span>2024 年 2 月 13 日 23:59</span>
               </CardItem>
 
               <CardItem icon={LocationOnOutlined} title="階段狀態">
