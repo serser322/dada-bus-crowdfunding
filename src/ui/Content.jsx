@@ -260,15 +260,28 @@ const YodaImgStyle = styled.div`
   }
 `;
 
-const currentAmount = 8711;
-const totalAmount = 44711;
-const updateDate = "2024/01/28";
+const currentAmount = 1711;
+const totalAmount = 55711;
+const updateDate = "2024/02/1";
 const targetAmount = 18000;
-const currentState = 2;
-const finishedTitle = "第一";
-const finishedAmount = "36,000";
-const lockedTitle = "第三";
-const lockedAmount = "18,000";
+const currentState = 3;
+const finished = [
+  {
+    title: "第一",
+    name: "基礎募資",
+    amount: "36,000",
+  },
+  {
+    title: "第二",
+    name: "台北站",
+    amount: "18,000",
+  },
+];
+const locked = {
+  title: "第四",
+  name: "高雄站",
+  amount: "18,000",
+};
 const deadlineTimestamp = new Date(2024, 1, 14, 0, 0, 0).getTime(); // 2024/02/14 00:00:00
 
 function Content() {
@@ -351,7 +364,7 @@ function Content() {
         <Container className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
           <div className="fade_in_anime w-full">
             <div className="self-start">
-              <Title title1="第二階段" title2="臺北站募資" />
+              <Title title1="第三階段" title2="臺中站募資" />
               <Divider />
             </div>
             <ProgressBar
@@ -469,11 +482,19 @@ function Content() {
             </Card>
           </div>
           <div className="fade_in_anime w-full">
-            <FinishedProgressBar
-              title={finishedTitle}
-              amount={finishedAmount}
+            {finished.map((item) => (
+              <FinishedProgressBar
+                title={item.title}
+                name={item.name}
+                amount={item.amount}
+                key={item.title}
+              />
+            ))}
+            <LockedProgressBar
+              title={locked.title}
+              name={locked.name}
+              amount={locked.amount}
             />
-            <LockedProgressBar title={lockedTitle} amount={lockedAmount} />
           </div>
           <div className="fade_in_anime w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
             {buttons.map((item) => (

@@ -71,9 +71,9 @@ const Bar = styled.div`
   }
 `;
 
-function FinishedProgressBar({ title, amount }) {
+function FinishedProgressBar({ title, name, amount }) {
   return (
-    <StyledBar className="w-full relative rounded-lg">
+    <StyledBar className="w-full relative mb-3 rounded-lg">
       <BusIconImage src={BusIcon} alt="" />
       <div className="text-xs font-semibold text-end mb-1">
         <span className="mr-2">(已解鎖)</span>
@@ -85,6 +85,7 @@ function FinishedProgressBar({ title, amount }) {
       </Bar>
       <div className="text-xs font-semibold mt-1.5 ml-3">
         <span className="mr-2">{title}階段募資</span>
+        <span className="mr-2">{name}</span>
         <span className="mr-6">NT${amount}</span>
       </div>
     </StyledBar>
