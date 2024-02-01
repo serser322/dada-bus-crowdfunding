@@ -53,7 +53,7 @@ const Bar = styled.div`
   }
 `;
 
-function LockedProgressBar({ title, amount }) {
+function LockedProgressBar({ title, name, amount }) {
   return (
     <StyledBar className="w-full relative rounded-lg">
       <BusIconImage src={BusIcon} alt="" />
@@ -67,6 +67,8 @@ function LockedProgressBar({ title, amount }) {
       </Bar>
       <div className="text-xs font-semibold mt-1.5 ml-3">
         <span className="mr-2">{title}階段募資</span>
+        <span className="mr-2">{name}</span>
+
         <span className="mr-6">NT${amount}</span>
       </div>
     </StyledBar>
