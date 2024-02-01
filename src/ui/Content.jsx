@@ -105,7 +105,7 @@ const DataImgStyle = styled.div`
   width: 10rem;
   position: absolute;
   right: 0;
-  top: -6.5rem;
+  top: -7.5rem;
   z-index: -1;
   opacity: 0.7;
   animation: DadaImgFadeIn 1s 2.2s backwards;
