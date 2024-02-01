@@ -202,7 +202,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
     }
   }
-`;function q1({title1:e,title2:t}){return v.jsxs("h1",{className:"font-bold text-base sm:text-lg ",children:[v.jsx("span",{className:"mr-10",children:e}),v.jsx("span",{children:t})]})}const Z1=b.div`
+`;function q1({title1:e,title2:t}){return v.jsxs("h1",{className:"font-bold text-base sm:text-lg ",children:[v.jsx("span",{className:"mr-5 sm:mr-10",children:e}),v.jsx("span",{children:t})]})}const Z1=b.div`
   display: block;
   width: 5.4rem;
   height: 1px;
@@ -512,7 +512,7 @@ https://fb.me/react-async-component-lifecycle-hooks`)}if(typeof e.getDerivedStat
   width: 10rem;
   position: absolute;
   right: 0;
-  top: -6.5rem;
+  top: -7.5rem;
   z-index: -1;
   opacity: 0.7;
   animation: DadaImgFadeIn 1s 2.2s backwards;
