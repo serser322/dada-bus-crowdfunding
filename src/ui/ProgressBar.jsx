@@ -87,29 +87,7 @@ const UpdateTime = styled.div`
 `;
 
 function ProgressBar({ targetAmount, currentAmount, updateDate }) {
-  // const [percentage, setPercentage] = useState(0);
-  // const percentageRef = useRef(null);
-  // percentageRef.current = percentage;
   const amountPercentage = ((currentAmount / targetAmount) * 100).toFixed(1);
-  // const seconds = 2000 / amountPercentage ;
-  // const seconds = 100;
-  // const increasePercentage = () => {
-  //   const increaseInterval = setInterval(() => {
-  //     if (percentageRef.current < amountPercentage) {
-  //       setPercentage((newValue) => newValue + 1);
-  //     } else {
-  //       clearInterval(increaseInterval);
-  //     }
-  //   }, seconds);
-  // };
-
-  // useEffect(() => {
-  //   // 延遲0.3秒再跑條
-  //   setTimeout(() => {
-  //     increasePercentage();
-  //   }, 300);
-  // }, []);
-
   return (
     <div className="w-full relative rounded-lg">
       <BusIconImage src={BusIcon} alt="" />

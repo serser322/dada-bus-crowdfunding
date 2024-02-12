@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import JSConfetti from "js-confetti";
 import { useState, useEffect } from "react";
 import DadaImg from "../../public/vts-2022-11-02_06h44_01.png";
 import YodaImg from "../../public/vts-2021-12-25_22h52_13.png";
@@ -11,6 +12,7 @@ import Card from "../ui/Card";
 import CardItem from "../ui/CardItem";
 import Button from "../ui/Button";
 import FinishedProgressBar from "../ui/FinishedProgressBar";
+import FinalFinishedProgressBar from "../ui/FinalFinishedProgressBar";
 import LockedProgressBar from "../ui/LockedProgressBar";
 import Modal from "../ui/Modal";
 
@@ -98,6 +100,19 @@ const SubText = styled.span`
 
   @media (min-width: 1024px) {
     font-size: 0.9rem;
+  }
+`;
+
+const HighlightText = styled.span`
+  color: var(--green-num);
+  font-size: 1rem;
+
+  @media (min-width: 370px) {
+    font-size: 1.1rem;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -261,20 +276,34 @@ const YodaImgStyle = styled.div`
 `;
 
 const currentAmount = 1711;
-const totalAmount = 55711;
-const updateDate = "2024/02/1";
-const targetAmount = 18000;
+const totalAmount = 90911;
+const updateDate = "2024/02/12";
+const targetAmount = 90000;
 const currentState = 3;
 const finished = [
   {
     title: "第一",
     name: "基礎募資",
     amount: "36,000",
+    amountNum: 36000,
   },
   {
     title: "第二",
     name: "台北站",
     amount: "18,000",
+    amountNum: 18000,
+  },
+  {
+    title: "第三",
+    name: "台中站",
+    amount: "18,000",
+    amountNum: 18000,
+  },
+  {
+    title: "第四",
+    name: "高雄站",
+    amount: "18,000",
+    amountNum: 18000,
   },
 ];
 const locked = {
@@ -283,6 +312,7 @@ const locked = {
   amount: "18,000",
 };
 const deadlineTimestamp = new Date(2024, 1, 14, 0, 0, 0).getTime(); // 2024/02/14 00:00:00
+const isFinished = totalAmount >= targetAmount;
 
 function Content() {
   const [isLoading, setIsLoading] = useState(true);
@@ -327,6 +357,14 @@ function Content() {
   ];
 
   useEffect(() => {
+    if (isFinished) {
+      setRemainDays("0");
+      setRemainHours("00");
+      setRemainMinutes("00");
+      setRemainSeconds("00");
+      return;
+    }
+
     const interval = setInterval(() => {
       setRemainTimeSeconds((newValue) => newValue - 1);
     }, 1000);
@@ -351,6 +389,20 @@ function Content() {
     return () => clearInterval(interval);
   }, [remainTimeSeconds]);
 
+  useEffect(() => {
+    if (isFinished) {
+      const confetti = new JSConfetti();
+      confetti.addConfetti({
+        confettiNumber: 50,
+      });
+      confetti.addConfetti({
+        emojis: ["🍗"],
+        emojiSize: 30,
+        confettiNumber: 50,
+      });
+    }
+  }, []);
+
   return (
     <StyledContent>
       <div
@@ -363,139 +415,242 @@ function Content() {
       <div className={isLoading ? "hidden" : "block"}>
         <Container className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
           <div className="fade_in_anime w-full">
-            <div className="self-start">
-              <Title title1="第三階段" title2="臺中站募資" />
-              <Divider />
-            </div>
-            <ProgressBar
-              targetAmount={targetAmount}
-              currentAmount={currentAmount}
-              updateDate={updateDate}
-            />
-            {/* <div className="self-end !mt-0 visible ">
-            <Divider />
-          </div> */}
-          </div>
-          <div className="fade_in_anime w-full">
-            <Card>
-              <CardItem icon={AttachMoneyRound} title="目前金額">
-                <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                  <SubText className="mr-2">NT$</SubText>
-                  <NumberText>
-                    <CountUp
-                      start={0}
-                      end={currentAmount}
-                      duration={3}
-                      delay={1.2}
-                    />
-                  </NumberText>
-                </div>
-              </CardItem>
-
-              {/* 螢幕寬度不同，更換目標金額的排列順序 */}
-              <div className="md:hidden">
-                <CardItem icon={AssistantPhotoOutlined} title="目標金額">
-                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                    <SubText className="mr-2">NT$</SubText>
-                    <NumberText>
-                      <CountUp
-                        start={0}
-                        end={targetAmount}
-                        duration={3}
-                        delay={1.2}
-                      />
-                    </NumberText>
-                  </div>
-                </CardItem>
-              </div>
-
-              <CardItem icon={AvTimerRound} title="募資倒數">
-                <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                  <NumberText className="mr-2">{remainDays}</NumberText>
-                  <SubText className="mr-4">天</SubText>
-                  <NumberText className="sm:mr-1">{remainHours}</NumberText>
-                  <SubText className="sm:mr-1">
-                    <span className="text-base">：</span>
-                  </SubText>
-                  <NumberText className="sm:mr-1">{remainMinutes}</NumberText>
-                  <SubText className="sm:mr-1">
-                    <span className="text-base">：</span>
-                  </SubText>
-                  <NumberText>{remainSeconds}</NumberText>
-                </div>
-              </CardItem>
-              {/* 螢幕寬度不同，更換目標金額的排列順序 */}
-              <div className="hidden md:block">
-                <CardItem
-                  icon={AssistantPhotoOutlined}
-                  title="目標金額"
-                  className="hidden md:block"
-                >
-                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                    <SubText className="mr-2">NT$</SubText>
-                    <NumberText>
-                      <CountUp
-                        start={0}
-                        end={targetAmount}
-                        duration={3}
-                        delay={1.2}
-                      />
-                    </NumberText>
-                  </div>
-                </CardItem>
-              </div>
-              <CardItem icon={CalendarTodayRound} title="截止時間">
-                <span>2024 年 2 月 13 日 23:59</span>
-              </CardItem>
-
-              <CardItem icon={LocationOnOutlined} title="階段狀態">
-                <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                  <NumberText className="mr-2">
-                    <CountUp
-                      start={0}
-                      end={currentState}
-                      duration={3}
-                      delay={1.2}
-                    />
-                  </NumberText>
-                  <SubText className="mr-1">
-                    <span className="mr-2">
-                      <span className="text-base">nd</span> 階段
-                    </span>
-                  </SubText>
-                  <span>募資中</span>
-                </div>
-              </CardItem>
-              <CardItem icon={AutoAwesomeOutlined} title="當前總額">
-                <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
-                  <SubText className="mr-2">NT$</SubText>
-                  <NumberText>
-                    <CountUp
-                      start={0}
-                      end={totalAmount}
-                      duration={3}
-                      delay={1.2}
-                    />
-                  </NumberText>
-                </div>
-              </CardItem>
-            </Card>
-          </div>
-          <div className="fade_in_anime w-full">
-            {finished.map((item) => (
-              <FinishedProgressBar
-                title={item.title}
-                name={item.name}
-                amount={item.amount}
-                key={item.title}
+            {!isFinished ? (
+              <ProgressBar
+                targetAmount={targetAmount}
+                currentAmount={currentAmount}
+                updateDate={updateDate}
               />
-            ))}
-            <LockedProgressBar
-              title={locked.title}
-              name={locked.name}
-              amount={locked.amount}
-            />
+            ) : (
+              <>
+                <div>
+                  <Title title1="募資全數達標!!" title2="感謝大家支持!!" />
+                  <Divider />
+                </div>
+                {finished.map((item) => (
+                  <FinalFinishedProgressBar
+                    title={item.title}
+                    name={item.name}
+                    amountNum={item.amountNum}
+                    key={item.title}
+                  />
+                ))}
+                {/* <p className="text-xs text-end">更新時間：{updateDate}</p> */}
+              </>
+            )}
           </div>
+          <div className="fade_in_anime w-full">
+            {!isFinished ? (
+              <Card>
+                <CardItem icon={AttachMoneyRound} title="目前金額">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <SubText className="mr-2">NT$</SubText>
+                    <NumberText>
+                      <CountUp
+                        start={0}
+                        end={currentAmount}
+                        duration={3}
+                        delay={1.2}
+                      />
+                    </NumberText>
+                  </div>
+                </CardItem>
+
+                {/* 螢幕寬度不同，更換目標金額的排列順序 */}
+                <div className="md:hidden">
+                  <CardItem icon={AssistantPhotoOutlined} title="目標金額">
+                    <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                      <SubText className="mr-2">NT$</SubText>
+                      <NumberText>
+                        <CountUp
+                          start={0}
+                          end={targetAmount}
+                          duration={3}
+                          delay={1.2}
+                        />
+                      </NumberText>
+                    </div>
+                  </CardItem>
+                </div>
+
+                <CardItem icon={AvTimerRound} title="募資倒數">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <NumberText className="mr-2">{remainDays}</NumberText>
+                    <SubText className="mr-4">天</SubText>
+                    <NumberText className="sm:mr-1">{remainHours}</NumberText>
+                    <SubText className="sm:mr-1">
+                      <span className="text-base">：</span>
+                    </SubText>
+                    <NumberText className="sm:mr-1">{remainMinutes}</NumberText>
+                    <SubText className="sm:mr-1">
+                      <span className="text-base">：</span>
+                    </SubText>
+                    <NumberText>{remainSeconds}</NumberText>
+                  </div>
+                </CardItem>
+                {/* 螢幕寬度不同，更換目標金額的排列順序 */}
+                <div className="hidden md:block">
+                  <CardItem
+                    icon={AssistantPhotoOutlined}
+                    title="目標金額"
+                    className="hidden md:block"
+                  >
+                    <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                      <SubText className="mr-2">NT$</SubText>
+                      <NumberText>
+                        <CountUp
+                          start={0}
+                          end={targetAmount}
+                          duration={3}
+                          delay={1.2}
+                        />
+                      </NumberText>
+                    </div>
+                  </CardItem>
+                </div>
+                <CardItem icon={CalendarTodayRound} title="截止時間">
+                  <span>2024 年 2 月 13 日 23:59</span>
+                </CardItem>
+
+                <CardItem icon={LocationOnOutlined} title="階段狀態">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <NumberText className="mr-2">
+                      <CountUp
+                        start={0}
+                        end={currentState}
+                        duration={3}
+                        delay={1.2}
+                      />
+                    </NumberText>
+                    <SubText className="mr-1">
+                      <span className="mr-2">
+                        <span className="text-base">nd</span> 階段
+                      </span>
+                    </SubText>
+                    <span>募資中</span>
+                  </div>
+                </CardItem>
+                <CardItem icon={AutoAwesomeOutlined} title="當前總額">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <SubText className="mr-2">NT$</SubText>
+                    <NumberText>
+                      <CountUp
+                        start={0}
+                        end={totalAmount}
+                        duration={3}
+                        delay={1.2}
+                      />
+                    </NumberText>
+                  </div>
+                </CardItem>
+              </Card>
+            ) : (
+              <Card>
+                <CardItem icon={AutoAwesomeOutlined} title="當前總額">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <SubText className="mr-2">NT$</SubText>
+                    <NumberText>
+                      <CountUp
+                        start={0}
+                        end={totalAmount}
+                        duration={3}
+                        delay={1.2}
+                      />
+                    </NumberText>
+                  </div>
+                </CardItem>
+                {/* 螢幕寬度不同，更換目標金額的排列順序 */}
+                <div className="md:hidden">
+                  <CardItem icon={AssistantPhotoOutlined} title="目標金額">
+                    <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                      <SubText className="mr-2">NT$</SubText>
+                      <NumberText>
+                        <CountUp
+                          start={0}
+                          end={targetAmount}
+                          duration={3}
+                          delay={1.2}
+                        />
+                      </NumberText>
+                    </div>
+                  </CardItem>
+                </div>
+
+                <CardItem icon={AvTimerRound} title="募資倒數">
+                  <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                    <NumberText className="mr-2">{remainDays}</NumberText>
+                    <SubText className="mr-4">天</SubText>
+                    <NumberText className="sm:mr-1">{remainHours}</NumberText>
+                    <SubText className="sm:mr-1">
+                      <span className="text-base">：</span>
+                    </SubText>
+                    <NumberText className="sm:mr-1">{remainMinutes}</NumberText>
+                    <SubText className="sm:mr-1">
+                      <span className="text-base">：</span>
+                    </SubText>
+                    <NumberText>{remainSeconds}</NumberText>
+                  </div>
+                </CardItem>
+                {/* 螢幕寬度不同，更換目標金額的排列順序 */}
+                <div className="hidden md:block">
+                  <CardItem
+                    icon={AssistantPhotoOutlined}
+                    title="目標金額"
+                    className="hidden md:block"
+                  >
+                    <div className="flex items-baseline sm:pb-0.5 lg:pb-1">
+                      <SubText className="mr-2">NT$</SubText>
+                      <NumberText>
+                        <CountUp
+                          start={0}
+                          end={targetAmount}
+                          duration={3}
+                          delay={1.2}
+                        />
+                      </NumberText>
+                    </div>
+                  </CardItem>
+                </div>
+                <CardItem icon={CalendarTodayRound} title="截止時間">
+                  <span>2024 年 2 月 13 日 23:59</span>
+                </CardItem>
+
+                <CardItem icon={LocationOnOutlined} title="完成目標">
+                  <div className="flex items-baseline mb-0.5">
+                    <HighlightText className="mr-1">
+                      <span>台北、台中、高雄</span>
+                    </HighlightText>
+                  </div>
+                </CardItem>
+                <CardItem icon={AutoAwesomeOutlined} title="階段狀態">
+                  <div className="flex items-baseline mb-0.5">
+                    <HighlightText>
+                      <span>募資結束</span>
+                      <span className="text-xs ml-2">(金額已達標)</span>
+                    </HighlightText>
+                  </div>
+                </CardItem>
+              </Card>
+            )}
+          </div>
+          {isFinished || (
+            <div className="fade_in_anime w-full">
+              {finished.map((item) => (
+                <FinishedProgressBar
+                  title={item.title}
+                  name={item.name}
+                  amount={item.amount}
+                  key={item.title}
+                />
+              ))}
+              <LockedProgressBar
+                title={locked.title}
+                name={locked.name}
+                amount={locked.amount}
+              />
+            </div>
+          )}
+
           <div className="fade_in_anime w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
             {buttons.map((item) => (
               <Button
@@ -505,21 +660,6 @@ function Content() {
                 key={item.text}
               />
             ))}
-            {/* <Button
-              text="活動簡介"
-              icon={TipsAndUpdatesRound}
-              onClick={toggleIntroModal}
-            />
-            <Button
-              text="募資方式"
-              icon={LiveHelpRound}
-              onClick={toggleAccountInfoModal}
-            />
-            <Button
-              text="募資回饋"
-              icon={ShoppingBagFilled}
-              onClick={toggleRewardModal}
-            /> */}
           </div>
         </Container>
         <DataImgStyle>
