@@ -7,11 +7,14 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
+    maxHeight: "fit-content",
+    height: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     boxShadow: "0px 0px 15px 0px  rgba(0,0,0,0.25)",
     borderRadius: "20px",
     paddingLeft: "30px",
+    paddingBottom: "30px",
   },
 };
 
