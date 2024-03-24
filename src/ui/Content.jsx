@@ -7,6 +7,7 @@ import CountUp from "react-countup";
 import Loader from "../ui/Loader";
 import Title from "../ui/Title";
 import Divider from "../ui/Divider";
+import BusInfoButtons from "../features/BusInfoButtons";
 import ProgressBar from "../ui/ProgressBar";
 import Card from "../ui/Card";
 import CardItem from "../ui/CardItem";
@@ -424,8 +425,12 @@ function Content() {
             ) : (
               <>
                 <div>
+                  <BusInfoButtons />
+                  <span className="flex justify-center">
+                    <Divider />
+                  </span>
                   <Title title1="募資全數達標!!" title2="感謝大家支持!!" />
-                  <Divider />
+                  {/* <Divider /> */}
                 </div>
                 {finished.map((item) => (
                   <FinalFinishedProgressBar
