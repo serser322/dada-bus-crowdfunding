@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import JSConfetti from "js-confetti";
+// import JSConfetti from "js-confetti";
 import { useState, useEffect } from "react";
 import DadaImg from "../../public/vts-2022-11-02_06h44_01.png";
 import YodaImg from "../../public/vts-2021-12-25_22h52_13.png";
@@ -8,6 +8,7 @@ import Loader from "../ui/Loader";
 import Title from "../ui/Title";
 import Divider from "../ui/Divider";
 import BusInfoButtons from "../features/BusInfoButtons";
+import ActivityInfo from "../features/ActivityInfo";
 import ProgressBar from "../ui/ProgressBar";
 import Card from "../ui/Card";
 import CardItem from "../ui/CardItem";
@@ -42,7 +43,7 @@ const StyledContent = styled.main`
 `;
 
 const Container = styled.div`
-  .fade_in_anime:first-child {
+  .fade_in_anime:nth-child(1) {
     opacity: 0;
     animation: FadeIn 1s 0.7s forwards ease;
   }
@@ -63,6 +64,12 @@ const Container = styled.div`
     position: relative;
     opacity: 0;
     animation: FadeIn 1s 2.2s forwards ease;
+  }
+
+  .fade_in_anime:nth-child(5) {
+    position: relative;
+    opacity: 0;
+    animation: FadeIn 1s 2.7s forwards ease;
   }
 
   @keyframes FadeIn {
@@ -390,19 +397,19 @@ function Content() {
     return () => clearInterval(interval);
   }, [remainTimeSeconds]);
 
-  useEffect(() => {
-    if (isFinished) {
-      const confetti = new JSConfetti();
-      confetti.addConfetti({
-        confettiNumber: 50,
-      });
-      confetti.addConfetti({
-        emojis: ["🍗"],
-        emojiSize: 30,
-        confettiNumber: 50,
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (isFinished) {
+  //     const confetti = new JSConfetti();
+  //     confetti.addConfetti({
+  //       confettiNumber: 50,
+  //     });
+  //     confetti.addConfetti({
+  //       emojis: ["🍗"],
+  //       emojiSize: 30,
+  //       confettiNumber: 50,
+  //     });
+  //   }
+  // }, []);
 
   return (
     <StyledContent>
@@ -416,6 +423,12 @@ function Content() {
       <div className={isLoading ? "hidden" : "block"}>
         <Container className="flex flex-col items-center relative space-y-4 mt-8 mb-12 mx-auto px-6 w-full max-w-lg sm:max-w-xl sm:space-y-9 md:max-w-3xl lg:max-w-4xl">
           <div className="fade_in_anime w-full">
+            <BusInfoButtons />
+          </div>
+          <div className="fade_in_anime w-full">
+            <ActivityInfo />
+          </div>
+          <div className="fade_in_anime w-full">
             {!isFinished ? (
               <ProgressBar
                 targetAmount={targetAmount}
@@ -425,7 +438,6 @@ function Content() {
             ) : (
               <>
                 <div>
-                  <BusInfoButtons />
                   <span className="flex justify-center">
                     <Divider />
                   </span>
