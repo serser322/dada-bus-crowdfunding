@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cloneDeep } from "lodash";
+import styled from "styled-components";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import Loader from "../ui/Loader";
@@ -7,6 +8,27 @@ import Loader from "../ui/Loader";
 import DirectionsBusRound from "@ricons/material/DirectionsBusRound";
 import DirectionsBusFilled from "@ricons/material/DirectionsBusFilled";
 import BusAlertFilled from "@ricons/material/BusAlertFilled";
+
+const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  background-color: var(--yellow-1);
+  border-radius: 10px;
+  width: 120px;
+  height: 35px;
+  box-shadow: 1px 3px 4px 1px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    background-color: var(--pink-2);
+  }
+
+  &:active {
+    background-color: var(--pink-3);
+    /* box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.25); */
+  }
+`;
 
 function BusInfoButtons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -190,14 +212,16 @@ function BusInfoButtons() {
                 <div className="self-center">
                   <a
                     href={busInfo.realTimeLink}
-                    className="flex content-center underline text-xl"
+                    className=""
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="w-5 self-center mr-2 sm:w-6">
-                      <DirectionsBusFilled />
-                    </div>
-                    點此查看
+                    <StyledButton>
+                      <div className="w-5 mr-2 ml-1 pt-px">
+                        <DirectionsBusRound />
+                      </div>
+                      <span className="tracking-[0.2rem]">即時動態</span>
+                    </StyledButton>
                   </a>
                 </div>
                 <div className="col-span-2 leading-5 mt-2">
