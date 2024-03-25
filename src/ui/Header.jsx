@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CloseRound from "@ricons/material/CloseRound";
+// import CloseRound from "@ricons/material/CloseRound";
 import SendFilled from "@ricons/material/SendFilled";
 
 const LeftLinesAnime = styled.div`
@@ -65,10 +65,10 @@ const TitleGroup = styled.div`
 `;
 
 const TitleText = styled.p`
-  font-size: 20px;
+  font-size: 22px;
 
   @media (min-width: 640px) {
-    font-size: 26px;
+    font-size: 28px;
   }
 `;
 
@@ -80,20 +80,22 @@ function Header() {
         <Line $color="orange" $colorCode="var(--yellow-1)" />
       </LeftLinesAnime>
       <TitleGroup className="flex flex-col items-center font-bold mt-6 sm:items-start sm:mx-10 sm:mt-0">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
           <TitleText>
-            <span className="font-black text-3xl sm:text-4xl">灰妲</span>
+            <span className="font-black">灰妲</span>
           </TitleText>
-          <div className="w-6 sm:w-9">
+          {/* <div className="w-5 sm:w-7 flex justify-center">
             <CloseRound />
-          </div>
-          <TitleText>三周年</TitleText>
+          </div> */}
+          <TitleText>三周年公車</TitleText>
         </div>
-        <div className="flex items-center space-x-4 sm:ml-20 mt-4">
-          <div className="w-5 sm:w-7">
+        <div className="flex items-center space-x-4 mt-4 sm:ml-16">
+          <div className="w-5 sm:w-6">
             <SendFilled />
           </div>
-          <TitleText>公車募資計畫</TitleText>
+          <TitleText className="flex items-center">
+            <span className="text-xl sm:text-2xl">3/20 - 4/18 上路</span>
+          </TitleText>
         </div>
       </TitleGroup>
       <RightLinesAnime className="hidden sm:flex flex-col justify-end items-end pb-2 sm:w-full">
