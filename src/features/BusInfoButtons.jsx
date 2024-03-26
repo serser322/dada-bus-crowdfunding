@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cloneDeep } from "lodash";
 import styled from "styled-components";
 import Button from "../ui/Button";
@@ -29,6 +29,8 @@ const StyledButton = styled.button`
   }
 `;
 
+let apiOptions = {};
+
 function BusInfoButtons() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +44,55 @@ function BusInfoButtons() {
     city: "",
     routeId: "",
   });
+
+  useEffect(() => {
+    const nowTimestamp = new Date().getTime();
+    const fetchToken = async () => {
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            grant_type: "client_credentials",
+            client_id: "www322.joe-8ee038b7-0a01-4373",
+            client_secret: "b3c2584a-1f36-472d-855a-ac64162cce5c",
+          }),
+        };
+        const response = await fetch(
+          "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token",
+          options
+        );
+        const data = await response.json();
+        localStorage.setItem("tdx_token", data.access_token);
+        localStorage.setItem(
+          "token_expiration_time",
+          nowTimestamp + 43200000 // 12小時
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const setToken = async () => {
+      if (
+        !localStorage.getItem("tdx_token") ||
+        nowTimestamp > localStorage.getItem("token_expiration_time")
+      ) {
+        await fetchToken();
+      }
+
+      apiOptions = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tdx_token")}`,
+        },
+      };
+    };
+
+    setToken();
+  }, []);
 
   const buttons = [
     {
@@ -95,7 +146,8 @@ function BusInfoButtons() {
 
   const getTaipeiBusLink = async (routeId) => {
     const res = await fetch(
-      `https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City/Taipei?%24filter=RouteID%20eq%20%27${routeId}%27&%24top=30&%24format=JSON`
+      `https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City/Taipei?%24filter=RouteID%20eq%20%27${routeId}%27&%24top=30&%24format=JSON`,
+      apiOptions
     );
     const data = await res.json();
     const TPERouteId = data[0].RouteMapImageUrl.split("nid=")[1];
@@ -107,7 +159,8 @@ function BusInfoButtons() {
       setIsModalOpen(true);
       setIsLoading(true);
       const res = await fetch(
-        `https://tdx.transportdata.tw/api/basic/v2/Bus/RealTimeNearStop/City/${city}?%24filter=PlateNumb%20eq%20%27${plateNumb}%27&%24top=5&%24format=JSON`
+        `https://tdx.transportdata.tw/api/basic/v2/Bus/RealTimeNearStop/City/${city}?%24filter=PlateNumb%20eq%20%27${plateNumb}%27&%24top=5&%24format=JSON`,
+        apiOptions
       );
       const data = await res.json();
       setIsLoading(false);
@@ -139,7 +192,7 @@ function BusInfoButtons() {
         routeId: realTimeData.RouteID,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
