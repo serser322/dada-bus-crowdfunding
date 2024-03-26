@@ -193,10 +193,10 @@ function BusInfoButtons() {
         ) : (
           <div>
             {hasBus ? (
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-2 sm:grid-cols-[0.9fr_1.1fr]">
                 <div>行駛路線：</div>
                 <div>
-                  <strong>{busInfo.routeName} 線路</strong>
+                  <strong>{busInfo.routeName} 路線</strong>
                 </div>
                 <div>行駛方向：</div>
                 <div>
