@@ -26,7 +26,6 @@ const StyledButton = styled.button`
 
   &:active {
     background-color: var(--pink-3);
-    /* box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.25); */
   }
 `;
 
@@ -36,10 +35,12 @@ function BusInfoButtons() {
   const [hasBus, setHasBus] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [busInfo, setBusInfo] = useState({
-    RouteName: "",
-    direction: "",
+    routeName: "",
+    directionName: "",
+    stopName: "",
     plateNumb: "",
-    realTimeLink: "",
+    city: "",
+    routeId: "",
   });
 
   const buttons = [
@@ -74,7 +75,8 @@ function BusInfoButtons() {
       directionName: "",
       stopName: "",
       plateNumb: "",
-      realTimeLink: "",
+      city: "",
+      routeId: "",
     });
   };
 
@@ -91,17 +93,13 @@ function BusInfoButtons() {
     }
   };
 
-  const getRealTimeMapLink = (city, plateNumb, routeId) => {
-    switch (city) {
-      case "Taipei":
-        return `https://ebus.gov.taipei/BusTime/${plateNumb}`;
-      case "Taichung":
-        return `https://citybus.taichung.gov.tw/ebus/driving-map/${routeId}`;
-      case "Kaohsiung":
-        return `https://ibus.tbkc.gov.tw/ibus/driving-map/${routeId}`;
-      default:
-        return "";
-    }
+  const getTaipeiBusLink = async (routeId) => {
+    const res = await fetch(
+      `https://tdx.transportdata.tw/api/basic/v2/Bus/Route/City/Taipei?%24filter=RouteID%20eq%20%27${routeId}%27&%24top=30&%24format=JSON`
+    );
+    const data = await res.json();
+    const TPERouteId = data[0].RouteMapImageUrl.split("nid=")[1];
+    return `https://ebus.gov.taipei/Route/StopsOfRoute?routeid=${TPERouteId}`;
   };
 
   async function showBusInfoModal(city, plateNumb) {
@@ -130,11 +128,6 @@ function BusInfoButtons() {
       }
 
       const directionName = getDirectionName(realTimeData.Direction);
-      const realTimeLink = getRealTimeMapLink(
-        city,
-        plateNumb,
-        realTimeData.RouteID
-      );
 
       setBusInfo({
         ...busInfo,
@@ -142,7 +135,8 @@ function BusInfoButtons() {
         directionName: directionName,
         stopName: realTimeData.StopName.Zh_tw,
         plateNumb: realTimeData.PlateNumb,
-        realTimeLink: realTimeLink,
+        city,
+        routeId: realTimeData.RouteID,
       });
     } catch (error) {
       console.log(error);
@@ -150,6 +144,26 @@ function BusInfoButtons() {
       setIsLoading(false);
     }
   }
+
+  const toRealTime = async (city, routeId) => {
+    let realTimeLink = "";
+
+    switch (city) {
+      case "Taipei":
+        realTimeLink = await getTaipeiBusLink(routeId);
+        break;
+      case "Taichung":
+        realTimeLink = `https://citybus.taichung.gov.tw/ebus/driving-map/${routeId}`;
+        break;
+      case "Kaohsiung":
+        realTimeLink = `https://ibus.tbkc.gov.tw/ibus/driving-map/${routeId}`;
+        break;
+      default:
+        realTimeLink = "";
+    }
+
+    window.open(realTimeLink, "_blank");
+  };
 
   return (
     <>
@@ -210,19 +224,14 @@ function BusInfoButtons() {
                 </div>
                 <div>查看即時動態：</div>
                 <div className="self-center">
-                  <a
-                    href={busInfo.realTimeLink}
-                    className=""
-                    target="_blank"
-                    rel="noreferrer"
+                  <StyledButton
+                    onClick={() => toRealTime(busInfo.city, busInfo.routeId)}
                   >
-                    <StyledButton>
-                      <div className="w-5 mr-2 ml-1 pt-px">
-                        <DirectionsBusRound />
-                      </div>
-                      <span className="tracking-[0.2rem]">即時動態</span>
-                    </StyledButton>
-                  </a>
+                    <div className="w-5 mr-2 ml-1 pt-px">
+                      <DirectionsBusRound />
+                    </div>
+                    <span className="tracking-[0.2rem]">即時動態</span>
+                  </StyledButton>
                 </div>
                 <div className="col-span-2 leading-5 mt-2">
                   <small>(同路線常有多車行駛，請留意車牌號碼。)</small>
