@@ -2,26 +2,34 @@
 
 ## 關於
 
-Relive 一期生 Vtuber[**灰妲**][Dada-youtube-url]，要出道三周年啦!!
-[灰妲 X 三周年公車募資進度網][Web-link]提供目前募資的最新情況，每周一會進行資訊更新，大家一起來讓灰妲滿街跑吧！
+Relive 一期生 Vtuber[**灰妲**][Dada-youtube-url]，出道三周年啦!!
+[灰妲 X 三周年公車募資進度網][Web-link]提供募資情況(已募資完畢)，並可查詢台北、台中、高雄四台公車的最新即時動態，大家一起來追灰妲的公車吧！
 
 ## 網站資訊
 
-可查看最新募資階段、金額、進度等等，與活動推特同步更新。
+可查看四台公車動態，包括當下路線、方向、最新停靠站，以及動態地圖連結；也可查看募資相關資訊。
 
 ##### 電腦版
 
-<img src="./public/web-screenshot.jpg" alt="網站截圖" width="80%" >
+<div>▼ 公車開跑後畫面</div>
+<img src="./public/desktop-screenshot_2.jpg" alt="網站截圖" width="70%" >
+
+<div>▼ 公車開跑前，募資進度畫面</div>
+<img src="./public/desktop-screenshot_1.jpg" alt="網站截圖" width="70%" >
 
 ##### 手機版
 
-<img src="./public/mobile-screenshot.jpg" alt="手機截圖" width="40%" >
+<div>▼ 公車開跑後畫面</div>
+<img src="./public/mobile-screenshot_2.jpg" alt="手機截圖" width="40%" >
+
+<div>▼ 公車開跑前，募資進度畫面</div>
+<img src="./public/mobile-screenshot_1.jpg" alt="手機截圖" width="40%" >
 
 ## 活動推特
 
 [![Dada bus twitter][Dada-bus-twitter-badge]][Dada-bus-twitter-url]
 
-## 版本 1.0.0
+## 版本 2.0.0
 
 ## 框架/套件
 
