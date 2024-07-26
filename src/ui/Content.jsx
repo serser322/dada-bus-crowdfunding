@@ -6,15 +6,15 @@ import YodaImg from "../../public/vts-2021-12-25_22h52_13.png";
 import CountUp from "react-countup";
 import Loader from "../ui/Loader";
 import Title from "../ui/Title";
-import Divider from "../ui/Divider";
+import Divider from "../components/Divider";
 import BusInfoButtons from "../features/BusInfoButtons";
 import ActivityInfo from "../features/ActivityInfo";
 import ProgressBar from "../ui/ProgressBar";
-import Card from "../ui/Card";
+import Card from "../components/Card";
 import CardItem from "../ui/CardItem";
 import Button from "../ui/Button";
 import FinishedProgressBar from "../ui/FinishedProgressBar";
-import FinalFinishedProgressBar from "../ui/FinalFinishedProgressBar";
+// import FinalFinishedProgressBar from "../ui/FinalFinishedProgressBar";
 import LockedProgressBar from "../ui/LockedProgressBar";
 import Modal from "../ui/Modal";
 
@@ -27,6 +27,7 @@ import AutoAwesomeOutlined from "@ricons/material/AutoAwesomeOutlined";
 import LiveHelpRound from "@ricons/material/LiveHelpRound";
 import TipsAndUpdatesRound from "@ricons/material/TipsAndUpdatesRound";
 import ShoppingBagFilled from "@ricons/material/ShoppingBagFilled";
+import FundraisingResults from "../features/FundraisingResults";
 
 const StyledContent = styled.main`
   width: 100%;
@@ -444,14 +445,15 @@ function Content() {
                   <Title title1="募資全數達標!!" title2="感謝大家支持!!" />
                   {/* <Divider /> */}
                 </div>
-                {finished.map((item) => (
+                {/* {finished.map((item) => (
                   <FinalFinishedProgressBar
                     title={item.title}
                     name={item.name}
                     amountNum={item.amountNum}
                     key={item.title}
                   />
-                ))}
+                ))} */}
+                {<FundraisingResults />}
                 {/* <p className="text-xs text-end">更新時間：{updateDate}</p> */}
               </>
             )}
