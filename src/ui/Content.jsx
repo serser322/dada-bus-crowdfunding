@@ -12,11 +12,11 @@ import ActivityInfo from "../features/ActivityInfo";
 import ProgressBar from "../ui/ProgressBar";
 // import Card from "../components/Card";
 // import CardItem from "../ui/CardItem";
-import Button from "../ui/Button";
+// import Button from "../ui/Button";
 import FinishedProgressBar from "../ui/FinishedProgressBar";
 // import FinalFinishedProgressBar from "../ui/FinalFinishedProgressBar";
 import LockedProgressBar from "../ui/LockedProgressBar";
-import Modal from "../ui/Modal";
+// import Modal from "../ui/Modal";
 
 // import AttachMoneyRound from "@ricons/material/AttachMoneyRound";
 // import AssistantPhotoOutlined from "@ricons/material/AssistantPhotoOutlined";
@@ -24,11 +24,12 @@ import Modal from "../ui/Modal";
 // import CalendarTodayRound from "@ricons/material/CalendarTodayRound";
 // import LocationOnOutlined from "@ricons/material/LocationOnOutlined";
 // import AutoAwesomeOutlined from "@ricons/material/AutoAwesomeOutlined";
-import LiveHelpRound from "@ricons/material/LiveHelpRound";
-import TipsAndUpdatesRound from "@ricons/material/TipsAndUpdatesRound";
-import ShoppingBagFilled from "@ricons/material/ShoppingBagFilled";
+// import LiveHelpRound from "@ricons/material/LiveHelpRound";
+// import TipsAndUpdatesRound from "@ricons/material/TipsAndUpdatesRound";
+// import ShoppingBagFilled from "@ricons/material/ShoppingBagFilled";
 import FundraisingResults from "../features/FundraisingResults";
 import FundraisingInfoCard from "../features/FundraisingInfoCard";
+import IntroBtnGroup from "../features/IntroBtnGroup";
 
 const StyledContent = styled.main`
   width: 100%;
@@ -334,37 +335,37 @@ function Content() {
   // const [remainHours, setRemainHours] = useState("0");
   // const [remainMinutes, setRemainMinutes] = useState("0");
   // const [remainSeconds, setRemainSeconds] = useState("0");
-  const [isIntroModalOpen, setIsIntroModalOpen] = useState(false);
-  const [isAccountInfoModalOpen, setIsAccountInfoModalOpen] = useState(false);
-  const [isRewardModalOpen, setIsRewardModalOpen] = useState(false);
+  // const [isIntroModalOpen, setIsIntroModalOpen] = useState(false);
+  // const [isAccountInfoModalOpen, setIsAccountInfoModalOpen] = useState(false);
+  // const [isRewardModalOpen, setIsRewardModalOpen] = useState(false);
 
   const imageLoad = () => {
     imgLoadedNum++;
     imgLoadedNum === 2 && setIsLoading(false);
   };
 
-  const toggleIntroModal = () => setIsIntroModalOpen((newValue) => !newValue);
-  const toggleAccountInfoModal = () =>
-    setIsAccountInfoModalOpen((newValue) => !newValue);
-  const toggleRewardModal = () => setIsRewardModalOpen((newValue) => !newValue);
+  // const toggleIntroModal = () => setIsIntroModalOpen((newValue) => !newValue);
+  // const toggleAccountInfoModal = () =>
+  //   setIsAccountInfoModalOpen((newValue) => !newValue);
+  // const toggleRewardModal = () => setIsRewardModalOpen((newValue) => !newValue);
 
-  const buttons = [
-    {
-      text: "活動簡介",
-      icon: TipsAndUpdatesRound,
-      event: toggleIntroModal,
-    },
-    {
-      text: "募資方式",
-      icon: LiveHelpRound,
-      event: toggleAccountInfoModal,
-    },
-    {
-      text: "募資回饋",
-      icon: ShoppingBagFilled,
-      event: toggleRewardModal,
-    },
-  ];
+  // const buttons = [
+  //   {
+  //     text: "活動簡介",
+  //     icon: TipsAndUpdatesRound,
+  //     event: toggleIntroModal,
+  //   },
+  //   {
+  //     text: "募資方式",
+  //     icon: LiveHelpRound,
+  //     event: toggleAccountInfoModal,
+  //   },
+  //   {
+  //     text: "募資回饋",
+  //     icon: ShoppingBagFilled,
+  //     event: toggleRewardModal,
+  //   },
+  // ];
 
   // useEffect(() => {
   //   if (isFinished) {
@@ -481,14 +482,15 @@ function Content() {
           )}
 
           <div className="fade_in_anime w-full pt-10 flex flex-col sm:flex-row space-y-5 sm:space-y-0 sm:space-x-7">
-            {buttons.map((item) => (
+            <IntroBtnGroup />
+            {/* {buttons.map((item) => (
               <Button
                 text={item.text}
                 icon={item.icon}
                 onClick={item.event}
                 key={item.text}
               />
-            ))}
+            ))} */}
           </div>
         </Container>
         <DataImgStyle>
@@ -498,7 +500,7 @@ function Content() {
           <img src={YodaImg} alt="" onLoad={imageLoad} />
         </YodaImgStyle>
       </div>
-      <Modal
+      {/* <Modal
         isOpen={isIntroModalOpen}
         title="活動簡介"
         closeModal={toggleIntroModal}
@@ -539,7 +541,7 @@ function Content() {
           </a>
           贈送搖搖立牌。
         </div>
-      </Modal>
+      </Modal> */}
     </StyledContent>
   );
 }
