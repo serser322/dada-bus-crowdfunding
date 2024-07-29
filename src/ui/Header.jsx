@@ -1,6 +1,6 @@
 import styled from "styled-components";
 // import CloseRound from "@ricons/material/CloseRound";
-import "../styles/header.scss";
+import "../styles/Header.scss";
 import SendFilled from "@ricons/material/SendFilled";
 
 // const LeftLinesAnime = styled.div`
