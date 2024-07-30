@@ -47,7 +47,7 @@ function FundraisingResults() {
                     start={0}
                     end={item.amountNum}
                     duration={3}
-                    delay={0.7}
+                    delay={1.2}
                   />
                 </span>
               </div>
@@ -58,7 +58,7 @@ function FundraisingResults() {
                     end={100}
                     decimals={1}
                     duration={3}
-                    delay={0.7}
+                    delay={1.2}
                   />
                   %
                 </span>

@@ -33,6 +33,12 @@ main {
       animation: FadeIn 1s 2.7s forwards ease;
     }
 
+    .fade_in_anime:nth-child(6) {
+      position: relative;
+      opacity: 0;
+      animation: FadeIn 1s 2.7s forwards ease;
+    }
+
     @keyframes FadeIn {
       0% {
         transform: translateY(-20px) rotateX(25deg);

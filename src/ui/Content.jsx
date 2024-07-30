@@ -9,49 +9,17 @@ import Divider from "../components/Divider";
 import BusInfoButtons from "../features/BusInfoButtons";
 import ActivityInfo from "../features/ActivityInfo";
 import ProgressBar from "../ui/ProgressBar";
-import FinishedProgressBar from "../ui/FinishedProgressBar";
-import LockedProgressBar from "../ui/LockedProgressBar";
 
 import FundraisingResults from "../features/FundraisingResults";
 import FundraisingInfoCard from "../features/FundraisingInfoCard";
 import IntroBtnGroup from "../features/IntroBtnGroup";
+import ProgressBarGroup from "../features/ProgressBarGroup";
 
 const currentAmount = 1711;
 const totalAmount = 90911;
 const updateDate = "2024/02/12";
 const targetAmount = 90000;
 // const currentState = 3;
-const finished = [
-  {
-    title: "第一",
-    name: "基礎募資",
-    amount: "36,000",
-    amountNum: 36000,
-  },
-  {
-    title: "第二",
-    name: "台北站",
-    amount: "18,000",
-    amountNum: 18000,
-  },
-  {
-    title: "第三",
-    name: "台中站",
-    amount: "18,000",
-    amountNum: 18000,
-  },
-  {
-    title: "第四",
-    name: "高雄站",
-    amount: "18,000",
-    amountNum: 18000,
-  },
-];
-const locked = {
-  title: "第四",
-  name: "高雄站",
-  amount: "18,000",
-};
 
 const isFinished = totalAmount >= targetAmount;
 
@@ -121,19 +89,7 @@ function Content() {
           </div>
           {isFinished || (
             <div className="fade_in_anime w-full">
-              {finished.map((item) => (
-                <FinishedProgressBar
-                  title={item.title}
-                  name={item.name}
-                  amount={item.amount}
-                  key={item.title}
-                />
-              ))}
-              <LockedProgressBar
-                title={locked.title}
-                name={locked.name}
-                amount={locked.amount}
-              />
+              <ProgressBarGroup />
             </div>
           )}
 
