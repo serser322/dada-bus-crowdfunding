@@ -1,35 +1,6 @@
 import styled from "styled-components";
-// import CloseRound from "@ricons/material/CloseRound";
-import "../styles/Header.scss";
+import "./../styles/Header.scss";
 import SendFilled from "@ricons/material/SendFilled";
-
-// const LeftLinesAnime = styled.div`
-//   animation: pushInFromLeft 1s forwards ease-out;
-
-//   @keyframes pushInFromLeft {
-//     0% {
-//       transform: translateX(-100%);
-//     }
-
-//     100% {
-//       transform: translateX(0);
-//     }
-//   }
-// `;
-
-// const RightLinesAnime = styled.div`
-//   animation: pushInFromRight 1s forwards ease-out;
-
-//   @keyframes pushInFromRight {
-//     0% {
-//       transform: translateX(100%);
-//     }
-
-//     100% {
-//       transform: translateX(0);
-//     }
-//   }
-// `;
 
 const Line = styled.div`
   width: 100vw;
