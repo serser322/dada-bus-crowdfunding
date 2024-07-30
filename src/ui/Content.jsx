@@ -3,23 +3,22 @@ import { useState } from "react";
 import "../styles/Content.scss";
 import DadaImg from "../../public/vts-2022-11-02_06h44_01.png";
 import YodaImg from "../../public/vts-2021-12-25_22h52_13.png";
-import Loader from "../ui/Loader";
-import Title from "../ui/Title";
+import Loader from "../components/Loader";
+import Title from "../components/Title";
 import Divider from "../components/Divider";
 import BusInfoButtons from "../features/BusInfoButtons";
 import ActivityInfo from "../features/ActivityInfo";
-import ProgressBar from "../ui/ProgressBar";
 
 import FundraisingResults from "../features/FundraisingResults";
 import FundraisingInfoCard from "../features/FundraisingInfoCard";
 import IntroBtnGroup from "../features/IntroBtnGroup";
 import ProgressBarGroup from "../features/ProgressBarGroup";
+import CurrentProgressBar from "../features/CurrentProgressBar";
 
-const currentAmount = 1711;
+const currentAmount = 70711;
 const totalAmount = 90911;
 const updateDate = "2024/02/12";
 const targetAmount = 90000;
-// const currentState = 3;
 
 const isFinished = totalAmount >= targetAmount;
 
@@ -65,7 +64,7 @@ function Content() {
           </div>
           <div className="fade_in_anime w-full">
             {!isFinished ? (
-              <ProgressBar
+              <CurrentProgressBar
                 targetAmount={targetAmount}
                 currentAmount={currentAmount}
                 updateDate={updateDate}

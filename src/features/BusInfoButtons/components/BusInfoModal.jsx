@@ -67,10 +67,8 @@ function BusInfoModal({ isOpen, setIsModalOpen, query }) {
       }
     };
 
-    if (isOpen) {
-      fetchData();
-    }
-  }, [isOpen, query, busInfo]);
+    if (isOpen) fetchData();
+  }, [isOpen]);
 
   // Fetch and set token
   useEffect(() => {

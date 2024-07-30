@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import CountUp from "react-countup";
 import Card from "../../components/Card";
-import CardItem from "../../ui/CardItem";
+import CardItem from "../../components/CardItem";
 import "../../styles/FundraisingCard.scss";
 import AttachMoneyRound from "@ricons/material/AttachMoneyRound";
 import AutoAwesomeOutlined from "@ricons/material/AutoAwesomeOutlined";

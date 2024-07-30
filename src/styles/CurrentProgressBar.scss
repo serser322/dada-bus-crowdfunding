@@ -1,0 +1,59 @@
+.bus-icon {
+  filter: invert(67%) sepia(76%) saturate(4030%) hue-rotate(93deg)
+    brightness(99%) contrast(108%);
+  width: 3.7rem;
+  position: absolute;
+  top: -7px;
+  left: 5px;
+}
+
+.number-text {
+  color: var(--red-text);
+}
+
+.progress-bar {
+  border: 4px solid #34465d;
+  position: relative;
+  height: 1.7rem;
+  box-shadow: 1px 3px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: 50% 100%;
+    background-image: linear-gradient(
+      110deg,
+      var(--green-bar) 0 30%,
+      #9effc1 45% 55%,
+      var(--green-bar) 70% 100%
+    );
+    border-radius: 0.8rem;
+    z-index: -1;
+  }
+}
+
+.update-time {
+  font-size: 10px;
+}
+
+@media (min-width: 640px) {
+  .bus-icon {
+    width: 4.6rem;
+    top: -13px;
+    left: 5px;
+  }
+  .progress-bar {
+    height: 2.5rem;
+  }
+
+  .update-time {
+    font-size: 11px;
+    position: absolute;
+    bottom: 4px;
+    right: 16px;
+  }
+}
