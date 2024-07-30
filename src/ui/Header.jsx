@@ -42,37 +42,6 @@ const Line = styled.div`
   }
 `;
 
-// const TitleGroup = styled.div`
-//   animation: bounceIn 1s 0.2s backwards ease;
-//   @media (min-width: 640px) {
-//     min-width: 18rem;
-//   }
-
-//   @keyframes bounceIn {
-//     0% {
-//       opacity: 0;
-//       transform: scale(0);
-//     }
-
-//     60% {
-//       transform: scale(1.1);
-//     }
-
-//     100% {
-//       opacity: 100%;
-//       transform: scale(1);
-//     }
-//   }
-// `;
-
-// const TitleText = styled.p`
-//   font-size: 22px;
-
-//   @media (min-width: 640px) {
-//     font-size: 28px;
-//   }
-// `;
-
 function Header() {
   return (
     <header className="flex flex-col justify-between overflow-hidden sm:flex-row sm:mt-6">

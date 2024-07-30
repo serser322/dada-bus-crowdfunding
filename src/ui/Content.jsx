@@ -15,16 +15,21 @@ import IntroBtnGroup from "../features/IntroBtnGroup";
 import ProgressBarGroup from "../features/ProgressBarGroup";
 import CurrentProgressBar from "../features/CurrentProgressBar";
 
-const currentAmount = 70711;
-const totalAmount = 90911;
-const updateDate = "2024/02/12";
-const targetAmount = 90000;
-
-const isFinished = totalAmount >= targetAmount;
-
 function Content() {
   const [isLoading, setIsLoading] = useState(true);
   let imgLoadedNum = 0;
+  const amountData = {
+    currentAmount: 70711,
+    totalAmount: 90911,
+    targetAmount: 90000,
+    currentState: 3,
+    updateDate: "2024/02/12",
+  };
+  amountData.isFinished =
+    amountData.totalAmount >= amountData.targetAmount ||
+    new Date().getTime() >= new Date(2024, 1, 14, 0, 0, 0).getTime();
+
+  // amountData.isFinished = false;
 
   const imageLoad = () => {
     imgLoadedNum++;
@@ -32,7 +37,7 @@ function Content() {
   };
 
   // useEffect(() => {
-  //   if (isFinished) {
+  //   if (amountData.isFinished) {
   //     const confetti = new JSConfetti();
   //     confetti.addConfetti({
   //       confettiNumber: 50,
@@ -63,12 +68,8 @@ function Content() {
             <ActivityInfo />
           </div>
           <div className="fade_in_anime w-full">
-            {!isFinished ? (
-              <CurrentProgressBar
-                targetAmount={targetAmount}
-                currentAmount={currentAmount}
-                updateDate={updateDate}
-              />
+            {!amountData.isFinished ? (
+              <CurrentProgressBar amountData={amountData} />
             ) : (
               <>
                 <div>
@@ -79,14 +80,14 @@ function Content() {
                   {/* <Divider /> */}
                 </div>
                 {<FundraisingResults />}
-                {/* <p className="text-xs text-end">更新時間：{updateDate}</p> */}
+                {/* <p className="text-xs text-end">更新時間：{amountData.updateDate}</p> */}
               </>
             )}
           </div>
           <div className="fade_in_anime w-full">
-            <FundraisingInfoCard />
+            <FundraisingInfoCard amountData={amountData} />
           </div>
-          {isFinished || (
+          {amountData.isFinished || (
             <div className="fade_in_anime w-full">
               <ProgressBarGroup />
             </div>

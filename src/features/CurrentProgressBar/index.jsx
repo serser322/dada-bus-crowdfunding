@@ -32,15 +32,23 @@ const Bar = styled.div`
   }
 `;
 
-function CurrentProgressBar({ targetAmount, currentAmount, updateDate }) {
-  const amountPercentage = ((currentAmount / targetAmount) * 100).toFixed(1);
+function CurrentProgressBar({ amountData }) {
+  const amountPercentage = (
+    (amountData.currentAmount / amountData.targetAmount) *
+    100
+  ).toFixed(1);
   return (
     <div className="w-full relative rounded-lg">
       <img className="bus-icon" src={BusIcon} alt="" />
       <div className="flex justify-end items-baseline font-bold mr-4 mb-1.5">
         <span className="text-sm sm:text-base mr-2">NT$</span>
         <span className="number-text text-xl sm:text-2xl">
-          <CountUp start={0} end={currentAmount} duration={3} delay={0.7} />
+          <CountUp
+            start={0}
+            end={amountData.currentAmount}
+            duration={3}
+            delay={0.7}
+          />
         </span>
       </div>
       <Bar className="progress-bar w-full" $percentage={amountPercentage}></Bar>
@@ -59,7 +67,7 @@ function CurrentProgressBar({ targetAmount, currentAmount, updateDate }) {
       </div>
 
       <div className="update-time flex justify-center mt-5">
-        資料更新：{updateDate}
+        資料更新：{amountData.updateDate}
       </div>
     </div>
   );
