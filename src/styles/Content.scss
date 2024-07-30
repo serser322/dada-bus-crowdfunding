@@ -1,0 +1,224 @@
+main {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  .content-container {
+    .fade_in_anime:nth-child(1) {
+      opacity: 0;
+      animation: FadeIn 1s 0.7s forwards ease;
+    }
+
+    .fade_in_anime:nth-child(2) {
+      position: relative;
+      opacity: 0;
+      animation: FadeIn 1s 1.2s forwards ease;
+    }
+
+    .fade_in_anime:nth-child(3) {
+      position: relative;
+      opacity: 0;
+      animation: FadeIn 1s 1.7s forwards ease;
+    }
+
+    .fade_in_anime:nth-child(4) {
+      position: relative;
+      opacity: 0;
+      animation: FadeIn 1s 2.2s forwards ease;
+    }
+
+    .fade_in_anime:nth-child(5) {
+      position: relative;
+      opacity: 0;
+      animation: FadeIn 1s 2.7s forwards ease;
+    }
+
+    .fade_in_anime:nth-child(6) {
+      position: relative;
+      opacity: 0;
+      animation: FadeIn 1s 2.7s forwards ease;
+    }
+
+    @keyframes FadeIn {
+      0% {
+        transform: translateY(-20px) rotateX(25deg);
+        opacity: 0;
+      }
+
+      100% {
+        top: 0;
+        transform: translateY(0px) rotateX(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .dada-image {
+    width: 10rem;
+    position: absolute;
+    right: 0;
+    top: -7.5rem;
+    z-index: -1;
+    opacity: 0.7;
+    animation: DadaImgFadeIn 1s 2.2s backwards;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 12rem;
+      height: 6rem;
+      background-color: rgba(0, 0, 0, 0.08);
+      border-radius: 1rem 0 0 1rem;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: -2;
+    }
+
+    @keyframes DadaImgFadeIn {
+      0% {
+        transform: translateX(-20px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 0.7;
+      }
+    }
+  }
+  .yoda-image {
+    width: 10rem;
+    position: absolute;
+    right: 0rem;
+    bottom: 6.2rem;
+    z-index: -1;
+    opacity: 0.7;
+    animation: YodaImgFadeIn 1s 2.2s backwards;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 12rem;
+      height: 6rem;
+      background-color: rgba(0, 0, 0, 0.08);
+      border-radius: 1rem 0 0 1rem;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: -2;
+    }
+
+    @keyframes YodaImgFadeIn {
+      0% {
+        transform: translateX(20px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  main {
+    .dada-image {
+      width: 11rem;
+      left: 0rem;
+      top: 10rem;
+
+      &:after {
+        border-radius: 1rem;
+        width: 14rem;
+        height: 7rem;
+        left: 0.5rem;
+      }
+    }
+    .yoda-image {
+      width: 11rem;
+      right: 0.5rem;
+      bottom: -1.5rem;
+      &:after {
+        border-radius: 1rem;
+        width: 14rem;
+        height: 7rem;
+        right: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    max-width: 1200px;
+    .dada-image {
+      width: 14rem;
+
+      &:after {
+        width: 18rem;
+        height: 9rem;
+      }
+    }
+    .yoda-image {
+      width: 14rem;
+      bottom: -3rem;
+      &:after {
+        width: 18rem;
+        height: 9rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  main {
+    max-width: 1350px;
+    .dada-image {
+      width: 16rem;
+      opacity: 1;
+      animation: DadaImgFadeIn 1s 2.2s backwards;
+
+      &:after {
+        width: 20rem;
+        height: 10rem;
+      }
+
+      @keyframes DadaImgFadeIn {
+        0% {
+          transform: translateX(-20px);
+          opacity: 0;
+        }
+
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+    .yoda-image {
+      width: 16rem;
+      bottom: -2rem;
+      opacity: 1;
+      animation: YodaImgFadeIn 1s 2.2s backwards;
+      &:after {
+        width: 20rem;
+        height: 10rem;
+      }
+  
+      @keyframes YodaImgFadeIn {
+        0% {
+          transform: translateX(20px);
+          opacity: 0;
+        }
+  
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

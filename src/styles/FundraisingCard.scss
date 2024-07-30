@@ -1,0 +1,41 @@
+.sub-text {
+  font-size: 0.7rem;
+}
+
+.number-text {
+  color: var(--green-num);
+  font-size: 1.2rem;
+}
+
+.highlight-text {
+  color: var(--green-num);
+  font-size: 1rem;
+}
+
+@media (min-width: 370px) {
+  .number-text {
+    font-size: 1.4rem; 
+  }
+
+  .highlight-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .number-text {
+    font-size: 1.6rem; 
+  }
+  .highlight-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sub-text {
+    font-size: 0.9rem;
+  }
+  .number-text {
+    font-size: 1.8rem; 
+  }
+}

@@ -1,5 +1,5 @@
 import DirectionsBusRound from "@ricons/material/DirectionsBusRound";
-import Card from "../ui/Card";
+import Card from "../../components/Card";
 
 function ActivityInfo() {
   return (
